@@ -4,8 +4,8 @@
 package baritone.events.events.baritoneOnly;
 
 import net.minecraft.util.math.BlockPos;
-import incest.tusky.game.event.events.Event;
-import incest.tusky.game.event.events.callables.EventCancellable;
+import digger.cmept.forum.event.events.Event;
+import digger.cmept.forum.event.events.callables.EventCancellable;
 public class EventBarBlockUse
 extends EventCancellable
 implements Event {

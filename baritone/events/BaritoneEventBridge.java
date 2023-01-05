@@ -31,15 +31,15 @@ import baritone.events.events.player.EventPreUpdate;
 import baritone.events.events.render.EventPostRender3D;
 import java.util.function.BiFunction;
 
-import incest.tusky.game.tuskevich;
-import incest.tusky.game.event.EventManager;
-import incest.tusky.game.event.EventTarget;
-import incest.tusky.game.event.events.impl.packet.EventReceivePacket;
-import incest.tusky.game.event.events.impl.packet.EventSendPacket;
-import incest.tusky.game.event.events.impl.player.EventUpdate;
-import incest.tusky.game.module.impl.Util.Baritone;
-import incest.tusky.game.utils.inventory.InventoryUtil;
-import incest.tusky.game.utils.math.MathematicHelper;
+import digger.cmept.forum.forum;
+import digger.cmept.forum.event.EventManager;
+import digger.cmept.forum.event.EventTarget;
+import digger.cmept.forum.event.events.impl.packet.EventReceivePacket;
+import digger.cmept.forum.event.events.impl.packet.EventSendPacket;
+import digger.cmept.forum.event.events.impl.player.EventUpdate;
+import digger.cmept.forum.module.impl.Util.Baritone;
+import digger.cmept.forum.utils.inventory.InventoryUtil;
+import digger.cmept.forum.utils.math.MathematicHelper;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.inventory.ClickType;
@@ -57,12 +57,12 @@ public class BaritoneEventBridge {
 
     @EventTarget
     public void onTick(EventVolatileTick myEvent) {
-        if (!tuskevich.instance.featureManager.getFeature(Baritone.class).isEnabled()) {
+        if (!forum.instance.featureManager.getFeature(Baritone.class).isEnabled()) {
             return;
         }
         BiFunction<EventState, TickEvent.Type, TickEvent> tickProvider = TickEvent.createNextProvider();
         for (IBaritone ibaritone : BaritoneAPI.getProvider().getAllBaritones()) {
-            if (!tuskevich.instance.featureManager.getFeature(Baritone.class).isEnabled()) {
+            if (!forum.instance.featureManager.getFeature(Baritone.class).isEnabled()) {
                 ibaritone.getPathingBehavior().forceCancel();
                 ibaritone.getPathingBehavior().cancelEverything();
             }
@@ -73,7 +73,7 @@ public class BaritoneEventBridge {
 
     @EventTarget
     public void onPreUpdate(EventPreUpdate myEvent) {
-        if (!tuskevich.instance.featureManager.getFeature(Baritone.class).isEnabled()) {
+        if (!forum.instance.featureManager.getFeature(Baritone.class).isEnabled()) {
             return;
         }
         IBaritone baritone = BaritoneAPI.getProvider().getBaritoneForPlayer(this.mc.player);
@@ -85,7 +85,7 @@ public class BaritoneEventBridge {
     @EventTarget
     public void onPostUpdate(EventUpdate myEvent) {
         IBaritone baritone;
-        if (!tuskevich.instance.featureManager.getFeature(Baritone.class).isEnabled()) {
+        if (!forum.instance.featureManager.getFeature(Baritone.class).isEnabled()) {
             return;
         }
         if (BaritoneAPI.getProvider().getPrimaryBaritone().getPathingBehavior().isPathing() || BaritoneAPI.getProvider().getPrimaryBaritone().getBuilderProcess().isActive() || BaritoneAPI.getProvider().getPrimaryBaritone().getGetToBlockProcess().isActive() || BaritoneAPI.getProvider().getPrimaryBaritone().getGetToBlockProcess().isActive() || BaritoneAPI.getProvider().getPrimaryBaritone().getExploreProcess().isActive() || BaritoneAPI.getProvider().getPrimaryBaritone().getCustomGoalProcess().isActive() || BaritoneAPI.getProvider().getPrimaryBaritone().getFollowProcess().isActive() || BaritoneAPI.getProvider().getPrimaryBaritone().getMineProcess().isActive() || BaritoneAPI.getProvider().getPrimaryBaritone().getFarmProcess().isActive()) {
@@ -114,7 +114,7 @@ public class BaritoneEventBridge {
 
     @EventTarget
     public void preChunkData(EventBarChunkPre myEvent) {
-        if (!tuskevich.instance.featureManager.getFeature(Baritone.class).isEnabled()) {
+        if (!forum.instance.featureManager.getFeature(Baritone.class).isEnabled()) {
             return;
         }
         for (IBaritone ibaritone : BaritoneAPI.getProvider().getAllBaritones()) {
@@ -125,7 +125,7 @@ public class BaritoneEventBridge {
 
     @EventTarget
     public void postChunkData(EventBarChunkPost myEvent) {
-        if (!tuskevich.instance.featureManager.getFeature(Baritone.class).isEnabled()) {
+        if (!forum.instance.featureManager.getFeature(Baritone.class).isEnabled()) {
             return;
         }
         for (IBaritone ibaritone : BaritoneAPI.getProvider().getAllBaritones()) {
@@ -136,7 +136,7 @@ public class BaritoneEventBridge {
 
     @EventTarget
     public void preChunk(EventBarAChunkPre myEvent) {
-        if (!tuskevich.instance.featureManager.getFeature(Baritone.class).isEnabled()) {
+        if (!forum.instance.featureManager.getFeature(Baritone.class).isEnabled()) {
             return;
         }
         for (IBaritone ibaritone : BaritoneAPI.getProvider().getAllBaritones()) {
@@ -147,7 +147,7 @@ public class BaritoneEventBridge {
 
     @EventTarget
     public void postChunk(EventBarAChunkPost myEvent) {
-        if (!tuskevich.instance.featureManager.getFeature(Baritone.class).isEnabled()) {
+        if (!forum.instance.featureManager.getFeature(Baritone.class).isEnabled()) {
             return;
         }
         for (IBaritone ibaritone : BaritoneAPI.getProvider().getAllBaritones()) {
@@ -158,7 +158,7 @@ public class BaritoneEventBridge {
 
     @EventTarget
     public void renderWorldPass(EventPostRender3D myEvent) {
-        if (!tuskevich.instance.featureManager.getFeature(Baritone.class).isEnabled()) {
+        if (!forum.instance.featureManager.getFeature(Baritone.class).isEnabled()) {
             return;
         }
         for (IBaritone ibaritone : BaritoneAPI.getProvider().getAllBaritones()) {
@@ -168,7 +168,7 @@ public class BaritoneEventBridge {
 
     @EventTarget
     public void onPreLoadWorld(EventBarPreLoadWorld myEvent) {
-        if (!tuskevich.instance.featureManager.getFeature(Baritone.class).isEnabled()) {
+        if (!forum.instance.featureManager.getFeature(Baritone.class).isEnabled()) {
             return;
         }
         if (this.mc.world == null && myEvent.world == null) {
@@ -179,7 +179,7 @@ public class BaritoneEventBridge {
 
     @EventTarget
     public void onPostLoadWorld(EventBarPostLoadWorld myEvent) {
-        if (!tuskevich.instance.featureManager.getFeature(Baritone.class).isEnabled()) {
+        if (!forum.instance.featureManager.getFeature(Baritone.class).isEnabled()) {
             return;
         }
         BaritoneAPI.getProvider().getPrimaryBaritone().getGameEventHandler().onWorldEvent(new WorldEvent(myEvent.world, EventState.POST));
@@ -187,7 +187,7 @@ public class BaritoneEventBridge {
 
     @EventTarget
     public void onPreSendPacket(EventSendPacket myEvent) {
-        if (!tuskevich.instance.featureManager.getFeature(Baritone.class).isEnabled()) {
+        if (!forum.instance.featureManager.getFeature(Baritone.class).isEnabled()) {
             return;
         }
         for (IBaritone ibaritone : BaritoneAPI.getProvider().getAllBaritones()) {
@@ -198,7 +198,7 @@ public class BaritoneEventBridge {
 
     @EventTarget
     public void onPostSendPacket(EventPostSendPacket myEvent) {
-        if (!tuskevich.instance.featureManager.getFeature(Baritone.class).isEnabled()) {
+        if (!forum.instance.featureManager.getFeature(Baritone.class).isEnabled()) {
             return;
         }
         for (IBaritone ibaritone : BaritoneAPI.getProvider().getAllBaritones()) {
@@ -209,7 +209,7 @@ public class BaritoneEventBridge {
 
     @EventTarget
     public void onPreReceivePacket(EventReceivePacket myEvent) {
-        if (!tuskevich.instance.featureManager.getFeature(Baritone.class).isEnabled()) {
+        if (!forum.instance.featureManager.getFeature(Baritone.class).isEnabled()) {
             return;
         }
         for (IBaritone ibaritone : BaritoneAPI.getProvider().getAllBaritones()) {
@@ -220,7 +220,7 @@ public class BaritoneEventBridge {
 
     @EventTarget
     public void onPostReceivePacket(EventPostReceivePacket myEvent) {
-        if (!tuskevich.instance.featureManager.getFeature(Baritone.class).isEnabled()) {
+        if (!forum.instance.featureManager.getFeature(Baritone.class).isEnabled()) {
             return;
         }
         for (IBaritone ibaritone : BaritoneAPI.getProvider().getAllBaritones()) {
@@ -231,7 +231,7 @@ public class BaritoneEventBridge {
 
     @EventTarget
     public void onSprintState(EventBarSprintState myEvent) {
-        if (!tuskevich.instance.featureManager.getFeature(Baritone.class).isEnabled()) {
+        if (!forum.instance.featureManager.getFeature(Baritone.class).isEnabled()) {
             return;
         }
         IBaritone baritone = BaritoneAPI.getProvider().getBaritoneForPlayer(this.mc.player);
@@ -247,7 +247,7 @@ public class BaritoneEventBridge {
 
     @EventTarget
     public void onBlockBreak(EventBarBlockBreak myEvent) {
-        if (!tuskevich.instance.featureManager.getFeature(Baritone.class).isEnabled()) {
+        if (!forum.instance.featureManager.getFeature(Baritone.class).isEnabled()) {
             return;
         }
         BaritoneAPI.getProvider().getPrimaryBaritone().getGameEventHandler().onBlockInteract(new BlockInteractEvent(myEvent.position, BlockInteractEvent.Type.START_BREAK));
@@ -255,7 +255,7 @@ public class BaritoneEventBridge {
 
     @EventTarget
     public void onBlockUse(EventBarBlockUse myEvent) {
-        if (!tuskevich.instance.featureManager.getFeature(Baritone.class).isEnabled()) {
+        if (!forum.instance.featureManager.getFeature(Baritone.class).isEnabled()) {
             return;
         }
         BaritoneAPI.getProvider().getPrimaryBaritone().getGameEventHandler().onBlockInteract(new BlockInteractEvent(myEvent.position, BlockInteractEvent.Type.USE));
@@ -263,7 +263,7 @@ public class BaritoneEventBridge {
 
     @EventTarget
     public void onDeath(EventBarDeath myEvent) {
-        if (!tuskevich.instance.featureManager.getFeature(Baritone.class).isEnabled()) {
+        if (!forum.instance.featureManager.getFeature(Baritone.class).isEnabled()) {
             return;
         }
         for (IBaritone ibaritone : BaritoneAPI.getProvider().getAllBaritones()) {

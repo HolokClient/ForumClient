@@ -14,11 +14,11 @@ import java.util.Locale;
 import java.util.Properties;
 import java.util.Random;
 
-import incest.tusky.game.tuskevich;
-import incest.tusky.game.cmd.impl.FakeNameCommand;
-import incest.tusky.game.module.impl.Util.NameProtect;
-import incest.tusky.game.utils.render.Colors;
-import incest.tusky.game.utils.render.RenderUtils;
+import digger.cmept.forum.forum;
+import digger.cmept.forum.cmd.impl.FakeNameCommand;
+import digger.cmept.forum.module.impl.Util.NameProtect;
+import digger.cmept.forum.utils.render.Colors;
+import digger.cmept.forum.utils.render.RenderUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.BufferBuilder;
 import net.minecraft.client.renderer.GlStateManager;
@@ -636,7 +636,7 @@ public class FontRenderer implements IResourceManagerReloadListener {
         setColor(this.red, this.blue, this.green, this.alpha);
         this.posX = x;
         this.posY = y;
-        if (tuskevich.instance.featureManager.getFeature(NameProtect.class).isEnabled() && NameProtect.myName.getCurrentValue())
+        if (forum.instance.featureManager.getFeature(NameProtect.class).isEnabled() && NameProtect.myName.getCurrentValue())
             text = text.replaceAll((Minecraft.getMinecraft()).session.getUsername(), TextFormatting.WHITE + "" + TextFormatting.ITALIC + "Protected" + TextFormatting.RESET);
         if (FakeNameCommand.canChange)
             text = text.replaceAll((Minecraft.getMinecraft()).session.getUsername(), FakeNameCommand.currentName);

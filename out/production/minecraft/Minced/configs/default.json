@@ -246,7 +246,7 @@
       }
     },
     "AttackAura": {
-      "state": false,
+      "state": true,
       "keyIndex": 0,
       "Settings": {
         "Rotation Mode": "Matrix",
@@ -391,10 +391,10 @@
       }
     },
     "TargetHUD": {
-      "state": false,
+      "state": true,
       "keyIndex": 0,
       "Settings": {
-        "TargetHUD Mode": "Minced"
+        "TargetHUD Mode": "Celestial"
       }
     },
     "AirStealer": {
@@ -497,8 +497,8 @@
       "state": false,
       "keyIndex": 54,
       "Settings": {
-        "Gui Color": -6418961,
-        "Gui Color 2": -16777216,
+        "Gui Color": -505817,
+        "Gui Color 2": -2675411,
         "Blur": false,
         "Shadow": true
       }
@@ -777,11 +777,11 @@
       }
     },
     "Hud": {
-      "state": false,
+      "state": true,
       "keyIndex": 0,
       "Settings": {
         "WaterMark": true,
-        "WaterMark Mode": "Minced",
+        "WaterMark Mode": "Celestial",
         "Potion Info": true,
         "Armor Status": true,
         "Coordinates": true

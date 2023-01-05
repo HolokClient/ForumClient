@@ -2,11 +2,11 @@ package net.minecraft.client.model;
 
 import java.awt.Color;
 
-import incest.tusky.game.tuskevich;
-import incest.tusky.game.module.impl.Render.CustomModel;
-import incest.tusky.game.utils.render.ClientHelper;
-import incest.tusky.game.utils.render.ColorUtils;
-import incest.tusky.game.utils.render.RenderUtils;
+import digger.cmept.forum.forum;
+import digger.cmept.forum.module.impl.Render.CustomModel;
+import digger.cmept.forum.utils.render.ClientHelper;
+import digger.cmept.forum.utils.render.ColorUtils;
+import digger.cmept.forum.utils.render.RenderUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.Entity;
@@ -980,7 +980,7 @@ public class ModelPlayer extends ModelBiped {
 
     public void render(Entity entityIn, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scale) {
         GlStateManager.pushMatrix();
-        if ((!CustomModel.onlyMe.getCurrentValue() || entityIn == (Minecraft.getMinecraft()).player || (tuskevich.instance.friendManager.isFriend(entityIn.getName()) && CustomModel.friends.getCurrentValue())) && !CustomModel.modelMode.currentMode.equals("None") && tuskevich.instance.featureManager.getFeature(CustomModel.class).isEnabled()) {
+        if ((!CustomModel.onlyMe.getCurrentValue() || entityIn == (Minecraft.getMinecraft()).player || (forum.instance.friendManager.isFriend(entityIn.getName()) && CustomModel.friends.getCurrentValue())) && !CustomModel.modelMode.currentMode.equals("None") && forum.instance.featureManager.getFeature(CustomModel.class).isEnabled()) {
             if (CustomModel.modelMode.currentMode.equals("Amogus")) {
                 boolean flag = (entityIn instanceof EntityLivingBase && ((EntityLivingBase) entityIn).getTicksElytraFlying() > 4);
                 this.bipedHead.rotateAngleY = netHeadYaw * 0.017453292F;
@@ -1060,7 +1060,7 @@ public class ModelPlayer extends ModelBiped {
                         legsColor = ColorUtils.rainbow(30, 1.0F, 1.0F).getRGB();
                         break;
                 }
-                if (CustomModel.friendHighlight.getCurrentValue() && tuskevich.instance.friendManager.isFriend(entityIn.getName())) {
+                if (CustomModel.friendHighlight.getCurrentValue() && forum.instance.friendManager.isFriend(entityIn.getName())) {
                     bodyColor = Color.GREEN.getRGB();
                     eyeColor = Color.WHITE.getRGB();
                     legsColor = Color.GREEN.getRGB();
@@ -1085,7 +1085,7 @@ public class ModelPlayer extends ModelBiped {
                     this.right_leg.render(scale);
                     GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
                 }
-            } else if (tuskevich.instance.featureManager.getFeature(CustomModel.class).isEnabled() && CustomModel.modelMode.currentMode.equals("Jeff Killer")) {
+            } else if (forum.instance.featureManager.getFeature(CustomModel.class).isEnabled() && CustomModel.modelMode.currentMode.equals("Jeff Killer")) {
                 this.Head.rotateAngleX = this.bipedHead.rotateAngleX;
                 this.Head.rotateAngleY = this.bipedHead.rotateAngleY;
                 this.Head.rotateAngleZ = this.bipedHead.rotateAngleZ;
@@ -1104,7 +1104,7 @@ public class ModelPlayer extends ModelBiped {
                 this.RightArm.render(scale);
                 this.Head.render(scale);
                 this.LeftArm.render(scale);
-            } else if (tuskevich.instance.featureManager.getFeature(CustomModel.class).isEnabled() && CustomModel.modelMode.currentMode.equals("Rabbit")) {
+            } else if (forum.instance.featureManager.getFeature(CustomModel.class).isEnabled() && CustomModel.modelMode.currentMode.equals("Rabbit")) {
                 GlStateManager.pushMatrix();
                 GlStateManager.scale(1.25D, 1.25D, 1.25D);
                 GlStateManager.translate(0.0D, -0.3D, 0.0D);
@@ -1127,7 +1127,7 @@ public class ModelPlayer extends ModelBiped {
                 GlStateManager.popMatrix();
 
 
-            } else if (tuskevich.instance.featureManager.getFeature(CustomModel.class).isEnabled() && CustomModel.modelMode.currentMode.equals("Demon")) {
+            } else if (forum.instance.featureManager.getFeature(CustomModel.class).isEnabled() && CustomModel.modelMode.currentMode.equals("Demon")) {
                 this.head7.rotateAngleX = this.bipedHead.rotateAngleX;
                 this.head7.rotateAngleY = this.bipedHead.rotateAngleY;
                 this.head7.rotateAngleZ = this.bipedHead.rotateAngleZ;
@@ -1192,7 +1192,7 @@ public class ModelPlayer extends ModelBiped {
     }
 
     public void renderCape(float scale) {
-        if (!tuskevich.instance.featureManager.getFeature(CustomModel.class).isEnabled() || (!CustomModel.modelMode.currentMode.equals("Werewolf") && !CustomModel.modelMode.currentMode.equals("Rabbit") && !CustomModel.modelMode.currentMode.equals("Sonic") && !CustomModel.modelMode.currentMode.equals("CupHead") && !CustomModel.modelMode.currentMode.equals("Chinchilla") && !CustomModel.modelMode.currentMode.equals("Freddy Bear") && !CustomModel.modelMode.currentMode.equals("Amogus") && !CustomModel.modelMode.currentMode.equals("Demon") && !CustomModel.modelMode.currentMode.equals("Red Panda") && !CustomModel.modelMode.currentMode.equals("Crab") && !CustomModel.modelMode.currentMode.equals("Jeff Killer")))
+        if (!forum.instance.featureManager.getFeature(CustomModel.class).isEnabled() || (!CustomModel.modelMode.currentMode.equals("Werewolf") && !CustomModel.modelMode.currentMode.equals("Rabbit") && !CustomModel.modelMode.currentMode.equals("Sonic") && !CustomModel.modelMode.currentMode.equals("CupHead") && !CustomModel.modelMode.currentMode.equals("Chinchilla") && !CustomModel.modelMode.currentMode.equals("Freddy Bear") && !CustomModel.modelMode.currentMode.equals("Amogus") && !CustomModel.modelMode.currentMode.equals("Demon") && !CustomModel.modelMode.currentMode.equals("Red Panda") && !CustomModel.modelMode.currentMode.equals("Crab") && !CustomModel.modelMode.currentMode.equals("Jeff Killer")))
             this.bipedCape.render(scale);
     }
 

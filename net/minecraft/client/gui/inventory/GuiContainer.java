@@ -6,9 +6,9 @@ import com.google.common.collect.Sets;
 import java.io.IOException;
 import java.util.Set;
 
-import incest.tusky.game.tuskevich;
-import incest.tusky.game.module.impl.Player.ItemScroller;
-import incest.tusky.game.utils.math.TimerHelper;
+import digger.cmept.forum.forum;
+import digger.cmept.forum.module.impl.Player.ItemScroller;
+import digger.cmept.forum.utils.math.TimerHelper;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.renderer.GlStateManager;
@@ -103,7 +103,7 @@ public abstract class GuiContainer
                 this.drawSlot(slot);
             }
             if (!this.isMouseOverSlot(slot, mouseX, mouseY) || !slot.canBeHovered()) continue;
-            if (tuskevich.instance.featureManager.getFeature(ItemScroller.class).isEnabled() && Mouse.isButtonDown(0) && Keyboard.isKeyDown(this.mc.gameSettings.keyBindSneak.getKeyCode()) && this.mc.currentScreen != null && this.timerHelper.hasReached(ItemScroller.scrollerDelay.getCurrentValue())) {
+            if (forum.instance.featureManager.getFeature(ItemScroller.class).isEnabled() && Mouse.isButtonDown(0) && Keyboard.isKeyDown(this.mc.gameSettings.keyBindSneak.getKeyCode()) && this.mc.currentScreen != null && this.timerHelper.hasReached(ItemScroller.scrollerDelay.getCurrentValue())) {
                 this.handleMouseClick(slot, slot.slotNumber, 0, ClickType.QUICK_MOVE);
                 this.timerHelper.reset();
             }

@@ -1,7 +1,7 @@
 package net.minecraft.client.renderer;
 
-import incest.tusky.game.event.EventManager;
-import incest.tusky.game.event.events.impl.render.EventRenderBlock;
+import digger.cmept.forum.event.EventManager;
+import digger.cmept.forum.event.events.impl.render.EventRenderBlock;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.block.model.IBakedModel;
 import net.minecraft.client.renderer.block.model.SimpleBakedModel;

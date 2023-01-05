@@ -9,11 +9,11 @@ import com.google.common.collect.Maps;
 import com.google.common.util.concurrent.FutureCallback;
 import com.google.common.util.concurrent.Futures;
 import com.mojang.authlib.GameProfile;
-import incest.tusky.game.tuskevich;
-import incest.tusky.game.event.EventManager;
-import incest.tusky.game.event.events.impl.player.RespawnEvent;
-import incest.tusky.game.module.impl.Combat.Velocity;
-import incest.tusky.game.module.impl.Render.DamageParticles;
+import digger.cmept.forum.forum;
+import digger.cmept.forum.event.EventManager;
+import digger.cmept.forum.event.events.impl.player.RespawnEvent;
+import digger.cmept.forum.module.impl.Combat.Velocity;
+import digger.cmept.forum.module.impl.Render.DamageParticles;
 import io.netty.buffer.Unpooled;
 
 import java.io.File;
@@ -495,7 +495,7 @@ public class NetHandlerPlayClient implements INetHandlerPlayClient {
         Entity entity = this.clientWorldController.getEntityByID(packetIn.getEntityID());
 
         if (entity != null) {
-            if (Velocity.velocityMode.currentMode.equals("Matrix") && tuskevich.instance.featureManager.getFeature(Velocity.class).isEnabled()) {
+            if (Velocity.velocityMode.currentMode.equals("Matrix") && forum.instance.featureManager.getFeature(Velocity.class).isEnabled()) {
                 if (packetIn.getEntityID() == Minecraft.getMinecraft().player.getEntityId()) {
                     entity.setVelocity(0.0D, packetIn.getMotionY() / 8000.0D, packetIn.getMotionZ() / 8000.0D / 2.5D);
                     // MovementHelper.strafe();
@@ -818,11 +818,11 @@ public class NetHandlerPlayClient implements INetHandlerPlayClient {
                 EntityPlayer entityplayer = (EntityPlayer) entity;
                 entityplayer.wakeUpPlayer(false, false, false);
             } else if (packetIn.getAnimationType() == 4) {
-                if (!tuskevich.instance.featureManager.getFeature(DamageParticles.class).isEnabled()) {
+                if (!forum.instance.featureManager.getFeature(DamageParticles.class).isEnabled()) {
                     this.gameController.effectRenderer.emitParticleAtEntity(entity, EnumParticleTypes.CRIT);
                 }
             } else if (packetIn.getAnimationType() == 5) {
-                if (!tuskevich.instance.featureManager.getFeature(DamageParticles.class).isEnabled()) {
+                if (!forum.instance.featureManager.getFeature(DamageParticles.class).isEnabled()) {
                     this.gameController.effectRenderer.emitParticleAtEntity(entity, EnumParticleTypes.CRIT_MAGIC);
                 }
             }

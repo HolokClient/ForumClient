@@ -4,8 +4,8 @@ package net.minecraft.client.renderer.entity;
 
 import java.util.Random;
 
-import incest.tusky.game.tuskevich;
-import incest.tusky.game.module.impl.Render.ItemPhysics;
+import digger.cmept.forum.forum;
+import digger.cmept.forum.module.impl.Render.ItemPhysics;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
@@ -48,15 +48,15 @@ public class RenderEntityItem
         boolean flag = p_177077_9_.isGui3d();
         int i = this.getModelCount(itemstack);
         float f = 0.25f;
-        float f1 = tuskevich.instance.featureManager.getFeature(ItemPhysics.class).isEnabled() ? 0.0f : MathHelper.sin(((float)itemIn.getAge() + p_177077_8_) / 10.0f + itemIn.hoverStart) * 0.1f + 0.1f;
+        float f1 = forum.instance.featureManager.getFeature(ItemPhysics.class).isEnabled() ? 0.0f : MathHelper.sin(((float)itemIn.getAge() + p_177077_8_) / 10.0f + itemIn.hoverStart) * 0.1f + 0.1f;
         GlStateManager.rotate(0.0f, 0.0f, 1.0f, 0.0f);
         float f2 = p_177077_9_.getItemCameraTransforms().getTransform((ItemCameraTransforms.TransformType)ItemCameraTransforms.TransformType.GROUND).scale.y;
         GlStateManager.translate((float)p_177077_2_, (float)p_177077_4_ + f1 + 0.25f * f2, (float)p_177077_6_);
-        if (!tuskevich.instance.featureManager.getFeature(ItemPhysics.class).isEnabled() && (flag || this.renderManager.options != null)) {
+        if (!forum.instance.featureManager.getFeature(ItemPhysics.class).isEnabled() && (flag || this.renderManager.options != null)) {
             float f3 = (((float)itemIn.getAge() + p_177077_8_) / 20.0f + itemIn.hoverStart) * 57.295776f;
             GlStateManager.rotate(f3, 0.0f, 1.0f, 0.0f);
         }
-        this.shadowSize = tuskevich.instance.featureManager.getFeature(ItemPhysics.class).isEnabled() ? 0.0f : 0.15f;
+        this.shadowSize = forum.instance.featureManager.getFeature(ItemPhysics.class).isEnabled() ? 0.0f : 0.15f;
         GlStateManager.color(1.0f, 1.0f, 1.0f, 1.0f);
         return i;
     }
@@ -81,7 +81,7 @@ public class RenderEntityItem
 
     @Override
     public void doRender(EntityItem entity, double x, double y, double z, float entityYaw, float partialTicks) {
-        if (!tuskevich.instance.featureManager.getFeature(ItemPhysics.class).isEnabled()) {
+        if (!forum.instance.featureManager.getFeature(ItemPhysics.class).isEnabled()) {
             ItemStack itemstack = entity.getItem();
             int i = itemstack.isEmpty() ? 187 : Item.getIdFromItem(itemstack.getItem()) + itemstack.getMetadata();
             this.random.setSeed(i);

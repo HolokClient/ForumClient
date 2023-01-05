@@ -18,8 +18,8 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Set;
 
-import incest.tusky.game.event.EventManager;
-import incest.tusky.game.event.events.impl.render.EventRenderToolTip;
+import digger.cmept.forum.event.EventManager;
+import digger.cmept.forum.event.events.impl.render.EventRenderToolTip;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.BufferBuilder;
 import net.minecraft.client.renderer.GlStateManager;

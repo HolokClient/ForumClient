@@ -2,8 +2,8 @@
 // Class Version: 8
 package net.minecraft.client.renderer.entity.layers;
 
-import incest.tusky.game.tuskevich;
-import incest.tusky.game.module.impl.Render.CustomModel;
+import digger.cmept.forum.forum;
+import digger.cmept.forum.module.impl.Render.CustomModel;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.AbstractClientPlayer;
 import net.minecraft.client.model.ModelElytra;
@@ -30,7 +30,7 @@ public class LayerElytra
 
     @Override
     public void doRenderLayer(EntityLivingBase entitylivingbaseIn, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch, float scale) {
-        if ((!CustomModel.onlyMe.getCurrentValue() || entitylivingbaseIn == Minecraft.getMinecraft().player || tuskevich.instance.friendManager.isFriend(entitylivingbaseIn.getName()) && CustomModel.friends.getCurrentValue()) && tuskevich.instance.featureManager.getFeature(CustomModel.class).isEnabled() && (CustomModel.modelMode.currentMode.equals("Rabbit") || CustomModel.modelMode.currentMode.equals("Sonic") || CustomModel.modelMode.currentMode.equals("CupHead") || CustomModel.modelMode.currentMode.equals("Freddy Bear") || CustomModel.modelMode.currentMode.equals("Chinchilla") || CustomModel.modelMode.currentMode.equals("Amogus") || CustomModel.modelMode.currentMode.equals("Red Panda") || CustomModel.modelMode.currentMode.equals("Demon") || CustomModel.modelMode.currentMode.equals("SirenHead") || CustomModel.modelMode.currentMode.equals("Jeff Killer") || CustomModel.modelMode.currentMode.equals("Crab"))) {
+        if ((!CustomModel.onlyMe.getCurrentValue() || entitylivingbaseIn == Minecraft.getMinecraft().player || forum.instance.friendManager.isFriend(entitylivingbaseIn.getName()) && CustomModel.friends.getCurrentValue()) && forum.instance.featureManager.getFeature(CustomModel.class).isEnabled() && (CustomModel.modelMode.currentMode.equals("Rabbit") || CustomModel.modelMode.currentMode.equals("Sonic") || CustomModel.modelMode.currentMode.equals("CupHead") || CustomModel.modelMode.currentMode.equals("Freddy Bear") || CustomModel.modelMode.currentMode.equals("Chinchilla") || CustomModel.modelMode.currentMode.equals("Amogus") || CustomModel.modelMode.currentMode.equals("Red Panda") || CustomModel.modelMode.currentMode.equals("Demon") || CustomModel.modelMode.currentMode.equals("SirenHead") || CustomModel.modelMode.currentMode.equals("Jeff Killer") || CustomModel.modelMode.currentMode.equals("Crab"))) {
             return;
         }
         ItemStack itemstack = entitylivingbaseIn.getItemStackFromSlot(EntityEquipmentSlot.CHEST);

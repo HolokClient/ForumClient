@@ -10,7 +10,7 @@ import baritone.api.event.events.ChatEvent;
 import baritone.behavior.LookBehavior;
 import baritone.events.events.baritoneOnly.EventBarSprintState;
 import baritone.events.events.player.EventPreUpdate;
-import incest.tusky.game.event.events.impl.player.*;
+import digger.cmept.forum.event.events.impl.player.*;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.ElytraSound;
@@ -88,17 +88,17 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.world.IInteractionObject;
 import net.minecraft.world.World;
-import incest.tusky.game.tuskevich;
-import incest.tusky.game.event.EventManager;
-import incest.tusky.game.event.events.Event;
-import incest.tusky.game.event.events.impl.packet.EventForDisabler;
-import incest.tusky.game.event.events.impl.packet.EventMessage;
-import incest.tusky.game.module.impl.Util.Baritone;
-import incest.tusky.game.module.impl.Movement.FreeCam;
-import incest.tusky.game.module.impl.Movement.NoClip;
-import incest.tusky.game.module.impl.Player.NoPush;
-import incest.tusky.game.module.impl.Movement.NoSlowDown;
-import incest.tusky.game.module.impl.Render.DamageParticles;
+import digger.cmept.forum.forum;
+import digger.cmept.forum.event.EventManager;
+import digger.cmept.forum.event.events.Event;
+import digger.cmept.forum.event.events.impl.packet.EventForDisabler;
+import digger.cmept.forum.event.events.impl.packet.EventMessage;
+import digger.cmept.forum.module.impl.Util.Baritone;
+import digger.cmept.forum.module.impl.Movement.FreeCam;
+import digger.cmept.forum.module.impl.Movement.NoClip;
+import digger.cmept.forum.module.impl.Player.NoPush;
+import digger.cmept.forum.module.impl.Movement.NoSlowDown;
+import digger.cmept.forum.module.impl.Render.DamageParticles;
 
 public class EntityPlayerSP extends AbstractClientPlayer {
     public final NetHandlerPlayClient connection;
@@ -270,7 +270,7 @@ public class EntityPlayerSP extends AbstractClientPlayer {
                 }
             } else {
                 this.onUpdateWalkingPlayer();
-                if (!tuskevich.instance.featureManager.getFeature(FreeCam.class).isEnabled()) {
+                if (!forum.instance.featureManager.getFeature(FreeCam.class).isEnabled()) {
                     this.rotationYaw = preYaw;
                     this.rotationPitch = prePitch;
                 }
@@ -283,7 +283,7 @@ public class EntityPlayerSP extends AbstractClientPlayer {
      * called every tick when the player is on foot. Performs all the things that normally happen during movement.
      */
     private void onUpdateWalkingPlayer() {
-        if (tuskevich.instance.featureManager.getFeature(FreeCam.class).isEnabled())
+        if (forum.instance.featureManager.getFeature(FreeCam.class).isEnabled())
             return;
         EventManager.call(new EventForDisabler());
         boolean flag = this.isSprinting();
@@ -335,7 +335,7 @@ public class EntityPlayerSP extends AbstractClientPlayer {
             ++this.positionUpdateTicks;
             boolean flag2 = d0 * d0 + d1 * d1 + d2 * d2 > 9.0E-4D || this.positionUpdateTicks >= 20;
             boolean flag3 = d3 != 0.0D || d4 != 0.0D;
-            if (!tuskevich.instance.featureManager.getFeature(FreeCam.class).isEnabled()) {
+            if (!forum.instance.featureManager.getFeature(FreeCam.class).isEnabled()) {
                 if (this.isRiding()) {
                     this.connection.sendPacket(new CPacketPlayer.PositionRotation(this.motionX, -999.0D, this.motionZ, eventPre.getYaw(), eventPre.getPitch(), eventPre.isOnGround()));
                     flag2 = false;
@@ -390,7 +390,7 @@ public class EntityPlayerSP extends AbstractClientPlayer {
      * Sends a chat message from the player.
      */
     public void sendChatMessage(String message) {
-        if (tuskevich.instance.featureManager.getFeature(Baritone.class).isEnabled()) {
+        if (forum.instance.featureManager.getFeature(Baritone.class).isEnabled()) {
             ChatEvent event = new ChatEvent(message);
             IBaritone baritone = BaritoneAPI.getProvider().getBaritoneForPlayer(this);
             if (baritone == null) {
@@ -552,7 +552,7 @@ public class EntityPlayerSP extends AbstractClientPlayer {
     protected boolean pushOutOfBlocks(double x, double y, double z) {
 
 
-        if (tuskevich.instance.featureManager.getFeature(NoPush.class).isEnabled() && NoPush.blocks.getCurrentValue() || tuskevich.instance.featureManager.getFeature(FreeCam.class).isEnabled() || tuskevich.instance.featureManager.getFeature(NoClip.class).isEnabled())
+        if (forum.instance.featureManager.getFeature(NoPush.class).isEnabled() && NoPush.blocks.getCurrentValue() || forum.instance.featureManager.getFeature(FreeCam.class).isEnabled() || forum.instance.featureManager.getFeature(NoClip.class).isEnabled())
             return false;
 
 
@@ -799,13 +799,13 @@ public class EntityPlayerSP extends AbstractClientPlayer {
      * Called when the entity is dealt a critical hit.
      */
     public void onCriticalHit(Entity entityHit) {
-        if (!tuskevich.instance.featureManager.getFeature(DamageParticles.class).isEnabled()) {
+        if (!forum.instance.featureManager.getFeature(DamageParticles.class).isEnabled()) {
             this.mc.effectRenderer.emitParticleAtEntity(entityHit, EnumParticleTypes.CRIT);
         }
     }
 
     public void onEnchantmentCritical(Entity entityHit) {
-        if (!tuskevich.instance.featureManager.getFeature(DamageParticles.class).isEnabled()) {
+        if (!forum.instance.featureManager.getFeature(DamageParticles.class).isEnabled()) {
             this.mc.effectRenderer.emitParticleAtEntity(entityHit, EnumParticleTypes.CRIT_MAGIC);
         }
     }
@@ -897,8 +897,8 @@ public class EntityPlayerSP extends AbstractClientPlayer {
         this.mc.func_193032_ao().func_193293_a(this.movementInput);
 
         if (this.isHandActive() && !this.isRiding()) {
-            this.movementInput.moveStrafe *= tuskevich.instance.featureManager.getFeature(NoSlowDown.class).isEnabled() ? NoSlowDown.percentage.getCurrentValue() / 100 : 0.2F;
-            this.movementInput.moveForward *= tuskevich.instance.featureManager.getFeature(NoSlowDown.class).isEnabled() ? NoSlowDown.percentage.getCurrentValue() / 100 : 0.2F;
+            this.movementInput.moveStrafe *= forum.instance.featureManager.getFeature(NoSlowDown.class).isEnabled() ? NoSlowDown.percentage.getCurrentValue() / 100 : 0.2F;
+            this.movementInput.moveForward *= forum.instance.featureManager.getFeature(NoSlowDown.class).isEnabled() ? NoSlowDown.percentage.getCurrentValue() / 100 : 0.2F;
             this.sprintToggleTimer = 0;
         }
 

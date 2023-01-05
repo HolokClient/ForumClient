@@ -5,8 +5,8 @@ import com.google.common.base.Predicates;
 import java.util.List;
 import javax.annotation.Nullable;
 
-import incest.tusky.game.tuskevich;
-import incest.tusky.game.module.impl.Render.DamageParticles;
+import digger.cmept.forum.forum;
+import digger.cmept.forum.module.impl.Render.DamageParticles;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -292,7 +292,7 @@ public abstract class EntityArrow extends Entity implements IProjectile
             {
                 for (int k = 0; k < 4; ++k)
                 {
-                    if(!tuskevich.instance.featureManager.getFeature(DamageParticles.class).isEnabled()) {
+                    if(!forum.instance.featureManager.getFeature(DamageParticles.class).isEnabled()) {
 
                         this.world.spawnParticle(EnumParticleTypes.CRIT, this.posX + this.motionX * (double) k / 4.0D, this.posY + this.motionY * (double) k / 4.0D, this.posZ + this.motionZ * (double) k / 4.0D, -this.motionX, -this.motionY + 0.2D, -this.motionZ);
                     }

@@ -4,8 +4,8 @@
 package baritone.events.events.baritoneOnly;
 
 import net.minecraft.client.multiplayer.WorldClient;
-import incest.tusky.game.event.events.Event;
-import incest.tusky.game.event.events.callables.EventCancellable;
+import digger.cmept.forum.event.events.Event;
+import digger.cmept.forum.event.events.callables.EventCancellable;
 public class EventBarPostLoadWorld
 extends EventCancellable
 implements Event {

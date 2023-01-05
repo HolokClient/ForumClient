@@ -1,10 +1,10 @@
 version:1343
 invertYMouse:false
-mouseSensitivity:0.5
+mouseSensitivity:0.2112676
 fov:1.0
 gamma:0.1
 saturation:0.0
-renderDistance:2
+renderDistance:10
 guiScale:2
 particles:2
 bobView:false
@@ -59,8 +59,8 @@ key_key.left:30
 key_key.back:31
 key_key.right:32
 key_key.jump:57
-key_key.sneak:42
-key_key.sprint:29
+key_key.sneak:29
+key_key.sprint:42
 key_key.drop:16
 key_key.inventory:18
 key_key.chat:20

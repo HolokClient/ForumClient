@@ -6,8 +6,8 @@ import java.util.List;
 import java.util.UUID;
 import javax.annotation.Nullable;
 
-import incest.tusky.game.tuskevich;
-import incest.tusky.game.module.impl.Render.DamageParticles;
+import digger.cmept.forum.forum;
+import digger.cmept.forum.module.impl.Render.DamageParticles;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -360,7 +360,7 @@ public class EntityShulkerBullet extends Entity {
     public boolean attackEntityFrom(DamageSource source, float amount) {
         if (!this.world.isRemote) {
             this.playSound(SoundEvents.ENTITY_SHULKER_BULLET_HURT, 1.0F, 1.0F);
-            if (!tuskevich.instance.featureManager.getFeature(DamageParticles.class).isEnabled()) {
+            if (!forum.instance.featureManager.getFeature(DamageParticles.class).isEnabled()) {
 
                 ((WorldServer) this.world).spawnParticle(EnumParticleTypes.CRIT, this.posX, this.posY, this.posZ, 15, 0.2D, 0.2D, 0.2D, 0.0D);
             }

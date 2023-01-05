@@ -9,9 +9,9 @@ import java.util.Random;
 import java.util.Set;
 import javax.annotation.Nullable;
 
-import incest.tusky.game.tuskevich;
-import incest.tusky.game.module.impl.Player.AutoTool;
-import incest.tusky.game.module.impl.Player.NoInteract;
+import digger.cmept.forum.forum;
+import digger.cmept.forum.module.impl.Player.AutoTool;
+import digger.cmept.forum.module.impl.Player.NoInteract;
 import net.minecraft.block.material.EnumPushReaction;
 import net.minecraft.block.material.MapColor;
 import net.minecraft.block.material.Material;
@@ -551,7 +551,7 @@ public class Block {
 
     public boolean canCollideCheck(IBlockState state, boolean hitIfLiquid) {
         for (Block block : Objects.requireNonNull(NoInteract.getRightClickableBlocks())) {
-            if (state.getBlock() != block || !tuskevich.instance.featureManager.getFeature(NoInteract.class).isEnabled())
+            if (state.getBlock() != block || !forum.instance.featureManager.getFeature(NoInteract.class).isEnabled())
                 continue;
             return false;
         }
@@ -640,7 +640,7 @@ public class Block {
         if (f < 0.0F) {
             return 0.0F;
         } else {
-            AutoTool autoTool = ((AutoTool) tuskevich.instance.featureManager.getFeature(AutoTool.class));
+            AutoTool autoTool = ((AutoTool) forum.instance.featureManager.getFeature(AutoTool.class));
             return !player.canHarvestBlock(state) ? player.getDigSpeed(state, (autoTool.isEnabled() && autoTool.silentSwitch.getCurrentValue()) ? player.inventory.getStackInSlot(autoTool.itemIndex) : player.getHeldItemMainhand()) / f / 100.0F : player.getDigSpeed(state, (autoTool.isEnabled() && autoTool.silentSwitch.getCurrentValue()) ? player.inventory.getStackInSlot(autoTool.itemIndex) : player.getHeldItemMainhand()) / f / 30.0F;
         }
     }

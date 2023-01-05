@@ -13,12 +13,12 @@ import java.util.Set;
 import java.util.UUID;
 import javax.annotation.Nullable;
 
-import incest.tusky.game.tuskevich;
-import incest.tusky.game.module.impl.Combat.HitBox;
-import incest.tusky.game.module.impl.Combat.KillAura;
-import incest.tusky.game.module.impl.Player.NoPush;
-import incest.tusky.game.friend.Friend;
-import incest.tusky.game.utils.math.RotationHelper;
+import digger.cmept.forum.forum;
+import digger.cmept.forum.module.impl.Combat.HitBox;
+import digger.cmept.forum.module.impl.Combat.KillAura;
+import digger.cmept.forum.module.impl.Player.NoPush;
+import digger.cmept.forum.friend.Friend;
+import digger.cmept.forum.utils.math.RotationHelper;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockFence;
@@ -1597,7 +1597,7 @@ public abstract class Entity implements ICommandSender {
             p_191958_2_ = p_191958_2_ * f;
             p_191958_3_ = p_191958_3_ * f;
             float yaw = rotationYaw;
-            if(tuskevich.instance.featureManager.getFeature(KillAura.class).isEnabled() && KillAura.target != null && this instanceof EntityPlayerSP && KillAura.silentMove.getCurrentValue() && Minecraft.getMinecraft().player.getDistanceToEntity(KillAura.target) > 1) {
+            if(forum.instance.featureManager.getFeature(KillAura.class).isEnabled() && KillAura.target != null && this instanceof EntityPlayerSP && KillAura.silentMove.getCurrentValue() && Minecraft.getMinecraft().player.getDistanceToEntity(KillAura.target) > 1) {
                 yaw = RotationHelper.Rotation.packetYaw;
             }
 
@@ -2204,7 +2204,7 @@ public abstract class Entity implements ICommandSender {
         if (this.noClip) {
             return false;
         }
-        if (tuskevich.instance.featureManager.getFeature(NoPush.class).isEnabled() && NoPush.blocks.getCurrentValue()) {
+        if (forum.instance.featureManager.getFeature(NoPush.class).isEnabled() && NoPush.blocks.getCurrentValue()) {
             return false;
         } else {
             BlockPos.PooledMutableBlockPos blockpos$pooledmutableblockpos = BlockPos.PooledMutableBlockPos.retain();
@@ -2365,13 +2365,13 @@ public abstract class Entity implements ICommandSender {
     }
 
     public float getCollisionBorderSize() {
-        for (Friend friend : tuskevich.instance.friendManager.getFriends()) {
+        for (Friend friend : forum.instance.friendManager.getFriends()) {
             if (!this.getName().equals(friend.getName())) {
                 continue;
             }
             return 0.0F;
         }
-        if (tuskevich.instance.featureManager.getFeature(HitBox.class).isEnabled()) {
+        if (forum.instance.featureManager.getFeature(HitBox.class).isEnabled()) {
             return HitBox.hitboxSize.getCurrentValue();
 
         } else {

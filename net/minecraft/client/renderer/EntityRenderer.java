@@ -15,15 +15,15 @@ import java.util.Random;
 import javax.annotation.Nullable;
 import javax.imageio.ImageIO;
 
-import incest.tusky.game.tuskevich;
-import incest.tusky.game.event.EventManager;
-import incest.tusky.game.event.events.impl.render.EventFogColor;
-import incest.tusky.game.event.events.impl.render.EventRender3D;
-import incest.tusky.game.module.impl.Render.NoRender;
-import incest.tusky.game.module.impl.Player.NoInteract;
-import incest.tusky.game.module.impl.Render.FogColor;
-import incest.tusky.game.module.impl.Render.WorldFeatures;
-import incest.tusky.game.ui.notif.NotifRender;
+import digger.cmept.forum.forum;
+import digger.cmept.forum.event.EventManager;
+import digger.cmept.forum.event.events.impl.render.EventFogColor;
+import digger.cmept.forum.event.events.impl.render.EventRender3D;
+import digger.cmept.forum.module.impl.Render.NoRender;
+import digger.cmept.forum.module.impl.Player.NoInteract;
+import digger.cmept.forum.module.impl.Render.FogColor;
+import digger.cmept.forum.module.impl.Render.WorldFeatures;
+import digger.cmept.forum.ui.notif.NotifRender;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockBed;
 import net.minecraft.block.material.Material;
@@ -500,7 +500,7 @@ public class EntityRenderer implements IResourceManagerReloadListener {
 
             for (int j = 0; j < list.size(); ++j) {
                 Entity entity1 = list.get(j);
-                if (entity1 instanceof EntityArmorStand && tuskevich.instance.featureManager.getFeature(NoInteract.class).isEnabled() && NoInteract.armorStands.getCurrentValue()) {
+                if (entity1 instanceof EntityArmorStand && forum.instance.featureManager.getFeature(NoInteract.class).isEnabled() && NoInteract.armorStands.getCurrentValue()) {
                     return;
                 }
                 AxisAlignedBB axisalignedbb = entity1.getEntityBoundingBox().expandXyz((double) entity1.getCollisionBorderSize());
@@ -625,7 +625,7 @@ public class EntityRenderer implements IResourceManagerReloadListener {
     }
 
     private void hurtCameraEffect(float partialTicks) {
-        if (tuskevich.instance.featureManager.getFeature(NoRender.class).isEnabled() && NoRender.noHurtCam.getCurrentValue()) {
+        if (forum.instance.featureManager.getFeature(NoRender.class).isEnabled() && NoRender.noHurtCam.getCurrentValue()) {
             return;
         }
         if (this.mc.getRenderViewEntity() instanceof EntityLivingBase) {
@@ -730,7 +730,7 @@ public class EntityRenderer implements IResourceManagerReloadListener {
 
                     if (raytraceresult != null) {
                         double d7 = raytraceresult.hitVec.distanceTo(new Vec3d(d0, d1, d2));
-                        if (tuskevich.instance.featureManager.getFeature(NoRender.class).isEnabled() && NoRender.cameraClip.getCurrentValue()) {
+                        if (forum.instance.featureManager.getFeature(NoRender.class).isEnabled() && NoRender.cameraClip.getCurrentValue()) {
 
                         } else {
                             if (d7 < d3) {
@@ -1024,7 +1024,7 @@ public class EntityRenderer implements IResourceManagerReloadListener {
                 float f = world.getSunBrightness(1.0F);
                 float f1 = f * 0.95F + 0.05F;
 
-                if (tuskevich.instance.featureManager.getFeature(WorldFeatures.class).isEnabled() && WorldFeatures.worldColor.getCurrentValue()) {
+                if (forum.instance.featureManager.getFeature(WorldFeatures.class).isEnabled() && WorldFeatures.worldColor.getCurrentValue()) {
                     int color = WorldFeatures.worldColors.getColorValue();
                     int r = color >> 16 & 0xFF;
                     int g = color >> 8 & 0xFF;
@@ -1839,7 +1839,7 @@ public class EntityRenderer implements IResourceManagerReloadListener {
                 return;
             }
         }
-        if (tuskevich.instance.featureManager.getFeature(WorldFeatures.class).isEnabled() && WorldFeatures.snow.getCurrentValue()) {
+        if (forum.instance.featureManager.getFeature(WorldFeatures.class).isEnabled() && WorldFeatures.snow.getCurrentValue()) {
             int hexColor = WorldFeatures.weatherColor.getColorValue();
             float red = (hexColor >> 16 & 0xFF) / 255.0F;
             float green = (hexColor >> 8 & 0xFF) / 255.0F;
@@ -1879,7 +1879,7 @@ public class EntityRenderer implements IResourceManagerReloadListener {
                         double d4 = this.rainYCoords[i2] * 0.5D;
                         blockpos$mutableblockpos.setPos(l1, 0, k1);
                         Biome biome = worldClient.getBiome((BlockPos) blockpos$mutableblockpos);
-                        boolean check = tuskevich.instance.featureManager.getFeature(WorldFeatures.class).isEnabled() && WorldFeatures.snow.getCurrentValue() ? true : ((biome.canRain() || biome.getEnableSnow()));
+                        boolean check = forum.instance.featureManager.getFeature(WorldFeatures.class).isEnabled() && WorldFeatures.snow.getCurrentValue() ? true : ((biome.canRain() || biome.getEnableSnow()));
                         if (check) {
                             int j2 = worldClient.getPrecipitationHeight((BlockPos) blockpos$mutableblockpos).getY();
                             int k2 = j - i1;
@@ -2315,7 +2315,7 @@ public class EntityRenderer implements IResourceManagerReloadListener {
             }
             GlStateManager.setFogDensity(2.0f);
         } else {
-            float value = tuskevich.instance.featureManager.getFeature(FogColor.class).isEnabled() ? FogColor.distance.getCurrentValue() * 50.0f : 0.0f;
+            float value = forum.instance.featureManager.getFeature(FogColor.class).isEnabled() ? FogColor.distance.getCurrentValue() * 50.0f : 0.0f;
             float f1 = this.farPlaneDistance - value;
             this.fogStandard = true;
             if (Config.isShaders()) {
@@ -2659,7 +2659,7 @@ public class EntityRenderer implements IResourceManagerReloadListener {
     }
 
     public void func_190565_a(ItemStack p_190565_1_) {
-        if (tuskevich.instance.featureManager.getFeature(NoRender.class).isEnabled() && NoRender.antiTotem.getCurrentValue()) {
+        if (forum.instance.featureManager.getFeature(NoRender.class).isEnabled() && NoRender.antiTotem.getCurrentValue()) {
             return;
         }
         this.field_190566_ab = p_190565_1_;

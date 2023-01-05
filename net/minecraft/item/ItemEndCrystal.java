@@ -2,8 +2,8 @@ package net.minecraft.item;
 
 import java.util.List;
 
-import incest.tusky.game.event.EventManager;
-import incest.tusky.game.event.events.impl.player.CrystalPlaceEvent;
+import digger.cmept.forum.event.EventManager;
+import digger.cmept.forum.event.events.impl.player.CrystalPlaceEvent;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;

@@ -66,15 +66,15 @@ import com.mojang.authlib.minecraft.MinecraftSessionService;
 import com.mojang.authlib.properties.PropertyMap;
 import com.mojang.authlib.yggdrasil.YggdrasilAuthenticationService;
 
-import incest.tusky.game.tuskevich;
-import incest.tusky.game.event.EventManager;
-import incest.tusky.game.event.events.impl.input.EventInputKey;
-import incest.tusky.game.event.events.impl.input.EventMouse;
-import incest.tusky.game.module.impl.Util.ChatHistory;
-import incest.tusky.game.module.impl.Util.FastWorldLoading;
-import incest.tusky.game.ui.SplashProgress;
-import incest.tusky.game.ui.font.FontUtil;
-import incest.tusky.game.ui.font.MCFontRenderer;
+import digger.cmept.forum.forum;
+import digger.cmept.forum.event.EventManager;
+import digger.cmept.forum.event.events.impl.input.EventInputKey;
+import digger.cmept.forum.event.events.impl.input.EventMouse;
+import digger.cmept.forum.module.impl.Util.ChatHistory;
+import digger.cmept.forum.module.impl.Util.FastWorldLoading;
+import digger.cmept.forum.ui.SplashProgress;
+import digger.cmept.forum.ui.font.FontUtil;
+import digger.cmept.forum.ui.font.MCFontRenderer;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -710,8 +710,8 @@ public class Minecraft implements IThreadListener, ISnooperInfo {
         this.effectRenderer = new ParticleManager(this.world, this.renderEngine);
         this.checkGLError("Post startup");
         this.ingameGUI = new GuiIngame(this);
-        tuskevich.instance.init();
-        tuskevich.instance.configManager.loadConfig("default");
+        forum.instance.init();
+        forum.instance.configManager.loadConfig("default");
         SplashProgress.setProgress(7);
         if (this.serverName != null) {
             JOptionPane.showMessageDialog(null, "Error");
@@ -782,7 +782,7 @@ public class Minecraft implements IThreadListener, ISnooperInfo {
 
     private void createDisplay() throws LWJGLException {
         Display.setResizable(true);
-        Display.setTitle(tuskevich.instance.name + " " + tuskevich.instance.type + " - https://vk.com/mincedclient");
+        Display.setTitle(forum.instance.name + " " + forum.instance.type + " - https://vk.com/mincedclient");
 
         try {
             Display.create((new PixelFormat()).withDepthBits(24));
@@ -891,19 +891,19 @@ public class Minecraft implements IThreadListener, ISnooperInfo {
 
         if (crashReportIn.getFile() != null) {
             Bootstrap.printToSYSOUT("#@!@# Game crashed! Crash report saved to: #@!@# " + crashReportIn.getFile());
-            tuskevich.instance.configManager.saveConfig("default");
-            tuskevich.instance.fileManager.saveFiles();
+            forum.instance.configManager.saveConfig("default");
+            forum.instance.fileManager.saveFiles();
 
             System.exit(-1);
         } else if (crashReportIn.saveToFile(file2)) {
             Bootstrap.printToSYSOUT("#@!@# Game crashed! Crash report saved to: #@!@# " + file2.getAbsolutePath());
-            tuskevich.instance.configManager.saveConfig("default");
-            tuskevich.instance.fileManager.saveFiles();
+            forum.instance.configManager.saveConfig("default");
+            forum.instance.fileManager.saveFiles();
             System.exit(-1);
         } else {
             Bootstrap.printToSYSOUT("#@?@# Game crashed! Crash report could not be saved. #@?@#");
-            tuskevich.instance.configManager.saveConfig("default");
-            tuskevich.instance.fileManager.saveFiles();
+            forum.instance.configManager.saveConfig("default");
+            forum.instance.fileManager.saveFiles();
             System.exit(-2);
         }
     }
@@ -1090,7 +1090,7 @@ public class Minecraft implements IThreadListener, ISnooperInfo {
 
         if (guiScreenIn instanceof GuiMainMenu || guiScreenIn instanceof GuiMultiplayer) {
             this.gameSettings.showDebugInfo = false;
-            this.ingameGUI.getChatGUI().clearChatMessages(!tuskevich.instance.featureManager.getFeature(ChatHistory.class).isEnabled());
+            this.ingameGUI.getChatGUI().clearChatMessages(!forum.instance.featureManager.getFeature(ChatHistory.class).isEnabled());
         }
 
         this.currentScreen = guiScreenIn;
@@ -1321,7 +1321,7 @@ public class Minecraft implements IThreadListener, ISnooperInfo {
             // empty catch block
         }
         try {
-            if (!tuskevich.instance.featureManager.getFeature(FastWorldLoading.class).isEnabled()) {
+            if (!forum.instance.featureManager.getFeature(FastWorldLoading.class).isEnabled()) {
                 System.gc();
                 this.loadWorld(null);
             }
@@ -1469,7 +1469,7 @@ public class Minecraft implements IThreadListener, ISnooperInfo {
      * Called when the window is closing. Sets 'running' to false which allows the game loop to exit cleanly.
      */
     public void shutdown() {
-        tuskevich.instance.stop();
+        forum.instance.stop();
         this.running = false;
     }
 
@@ -2182,7 +2182,7 @@ public class Minecraft implements IThreadListener, ISnooperInfo {
     public void launchIntegratedServer(String folderName, String worldName, @Nullable WorldSettings worldSettingsIn) {
         ISaveHandler isavehandler;
         WorldInfo worldinfo;
-        if (!tuskevich.instance.featureManager.getFeature(FastWorldLoading.class).isEnabled()) {
+        if (!forum.instance.featureManager.getFeature(FastWorldLoading.class).isEnabled()) {
             this.loadWorld(null);
             System.gc();
         }
@@ -2262,7 +2262,7 @@ public class Minecraft implements IThreadListener, ISnooperInfo {
         this.myNetworkManager = null;
         if (this.loadingScreen != null) {
             this.loadingScreen.resetProgressAndMessage(loadingMessage);
-            if (!tuskevich.instance.featureManager.getFeature(FastWorldLoading.class).isEnabled()) {
+            if (!forum.instance.featureManager.getFeature(FastWorldLoading.class).isEnabled()) {
                 this.loadingScreen.displayLoadingString("");
             }
         }
@@ -2304,7 +2304,7 @@ public class Minecraft implements IThreadListener, ISnooperInfo {
             this.saveLoader.flushCache();
             this.player = null;
         }
-        if (!tuskevich.instance.featureManager.getFeature(FastWorldLoading.class).isEnabled()) {
+        if (!forum.instance.featureManager.getFeature(FastWorldLoading.class).isEnabled()) {
             System.gc();
         }
         this.systemTime = 0L;

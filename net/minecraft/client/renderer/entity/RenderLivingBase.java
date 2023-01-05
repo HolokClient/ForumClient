@@ -6,11 +6,11 @@ import java.awt.*;
 import java.nio.FloatBuffer;
 import java.util.List;
 
-import incest.tusky.game.tuskevich;
-import incest.tusky.game.event.EventManager;
-import incest.tusky.game.event.events.impl.render.EventRenderPlayerName;
-import incest.tusky.game.module.impl.Render.Chams;
-import incest.tusky.game.utils.render.ClientHelper;
+import digger.cmept.forum.forum;
+import digger.cmept.forum.event.EventManager;
+import digger.cmept.forum.event.events.impl.render.EventRenderPlayerName;
+import digger.cmept.forum.module.impl.Render.Chams;
+import digger.cmept.forum.utils.render.ClientHelper;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.client.model.ModelBase;
@@ -292,7 +292,7 @@ public abstract class RenderLivingBase<T extends EntityLivingBase> extends Rende
         boolean flag = this.func_193115_c(entitylivingbaseIn);
         boolean flag1 = !flag && !(entitylivingbaseIn).isInvisibleToPlayer(Minecraft.getMinecraft().player);
         String mode = Chams.chamsMode.getCurrentMode();
-        boolean chamsCheck = tuskevich.instance.featureManager.getFeature(Chams.class).isEnabled() && entitylivingbaseIn instanceof EntityPlayer;
+        boolean chamsCheck = forum.instance.featureManager.getFeature(Chams.class).isEnabled() && entitylivingbaseIn instanceof EntityPlayer;
         Color chamsColorValue = new Color(Chams.colorChams.getColorValue());
         Color color = new Color(chamsColorValue.getRed(), chamsColorValue.getGreen(), chamsColorValue.getBlue());
         if (flag || flag1) {

@@ -1,9 +1,9 @@
 package net.minecraft.client.multiplayer;
 
 import baritone.utils.accessor.IPlayerControllerMP;
-import incest.tusky.game.event.EventManager;
-import incest.tusky.game.event.events.impl.packet.EventAttackSilent;
-import incest.tusky.game.event.events.impl.player.EventBlockInteract;
+import digger.cmept.forum.event.EventManager;
+import digger.cmept.forum.event.events.impl.packet.EventAttackSilent;
+import digger.cmept.forum.event.events.impl.player.EventBlockInteract;
 import io.netty.buffer.Unpooled;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockCommandBlock;

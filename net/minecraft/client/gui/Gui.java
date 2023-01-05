@@ -1,7 +1,7 @@
 package net.minecraft.client.gui;
 
-import incest.tusky.game.utils.render.GLUtil;
-import incest.tusky.game.utils.render.RenderUtils;
+import digger.cmept.forum.utils.render.GLUtil;
+import digger.cmept.forum.utils.render.RenderUtils;
 import net.minecraft.client.renderer.BufferBuilder;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.Tessellator;

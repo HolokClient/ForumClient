@@ -2,8 +2,8 @@
 // Class Version: 8
 package net.minecraft.client.renderer.entity.layers;
 
-import incest.tusky.game.tuskevich;
-import incest.tusky.game.module.impl.Render.CustomModel;
+import digger.cmept.forum.forum;
+import digger.cmept.forum.module.impl.Render.CustomModel;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.renderer.GlStateManager;
@@ -23,8 +23,8 @@ public class LayerHeldItem
 
     @Override
     public void doRenderLayer(EntityLivingBase entitylivingbaseIn, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch, float scale) {
-        if (tuskevich.instance.featureManager.getFeature(CustomModel.class).isEnabled() && CustomModel.modelMode.currentMode.equals("Jeff Killer")) {
-            if (!(!CustomModel.onlyMe.getCurrentValue() || entitylivingbaseIn == Minecraft.getMinecraft().player || tuskevich.instance.friendManager.isFriend(entitylivingbaseIn.getName()) && CustomModel.friends.getCurrentValue())) {
+        if (forum.instance.featureManager.getFeature(CustomModel.class).isEnabled() && CustomModel.modelMode.currentMode.equals("Jeff Killer")) {
+            if (!(!CustomModel.onlyMe.getCurrentValue() || entitylivingbaseIn == Minecraft.getMinecraft().player || forum.instance.friendManager.isFriend(entitylivingbaseIn.getName()) && CustomModel.friends.getCurrentValue())) {
                 boolean flag = entitylivingbaseIn.getPrimaryHand() == EnumHandSide.RIGHT;
                 ItemStack itemstack = flag ? entitylivingbaseIn.getHeldItemOffhand() : entitylivingbaseIn.getHeldItemMainhand();
                 ItemStack itemstack1 = flag ? entitylivingbaseIn.getHeldItemMainhand() : entitylivingbaseIn.getHeldItemOffhand();
@@ -75,7 +75,7 @@ public class LayerHeldItem
     }
 
     private void renderHeldItem(EntityLivingBase p_188358_1_, ItemStack p_188358_2_, ItemCameraTransforms.TransformType p_188358_3_, EnumHandSide handSide) {
-        if (tuskevich.instance.featureManager.getFeature(CustomModel.class).isEnabled() && (CustomModel.modelMode.currentMode.equals("Crab") || CustomModel.modelMode.currentMode.equals("Chinchilla"))) {
+        if (forum.instance.featureManager.getFeature(CustomModel.class).isEnabled() && (CustomModel.modelMode.currentMode.equals("Crab") || CustomModel.modelMode.currentMode.equals("Chinchilla"))) {
             if (!p_188358_2_.isEmpty()) {
                 GlStateManager.pushMatrix();
                 this.func_191361_a(handSide);
@@ -86,7 +86,7 @@ public class LayerHeldItem
                 GlStateManager.rotate(180.0f, 0.0f, 1.0f, 0.0f);
                 boolean flag = handSide == EnumHandSide.LEFT;
                 boolean bl = flag;
-                if (!(!CustomModel.onlyMe.getCurrentValue() || p_188358_1_ == Minecraft.getMinecraft().player || tuskevich.instance.friendManager.isFriend(p_188358_1_.getName()) && CustomModel.friends.getCurrentValue())) {
+                if (!(!CustomModel.onlyMe.getCurrentValue() || p_188358_1_ == Minecraft.getMinecraft().player || forum.instance.friendManager.isFriend(p_188358_1_.getName()) && CustomModel.friends.getCurrentValue())) {
                     GlStateManager.translate((float)(flag ? -1 : 1) / 16.0f, 0.125f, -0.625f);
                 } else {
                     GlStateManager.translate((double)((float)(flag ? -1 : 1) / 16.0f), (double)0.525f, -1.05);
@@ -94,7 +94,7 @@ public class LayerHeldItem
                 Minecraft.getMinecraft().getItemRenderer().renderItemSide(p_188358_1_, p_188358_2_, p_188358_3_, flag);
                 GlStateManager.popMatrix();
             }
-        } else if (tuskevich.instance.featureManager.getFeature(CustomModel.class).isEnabled() && CustomModel.modelMode.currentMode.equals("Freddy Bear")) {
+        } else if (forum.instance.featureManager.getFeature(CustomModel.class).isEnabled() && CustomModel.modelMode.currentMode.equals("Freddy Bear")) {
             if (!p_188358_2_.isEmpty()) {
                 GlStateManager.pushMatrix();
                 this.func_191361_a(handSide);
@@ -105,7 +105,7 @@ public class LayerHeldItem
                 GlStateManager.rotate(180.0f, 0.0f, 1.0f, 0.0f);
                 boolean flag = handSide == EnumHandSide.LEFT;
                 boolean bl = flag;
-                if (!(!CustomModel.onlyMe.getCurrentValue() || p_188358_1_ == Minecraft.getMinecraft().player || tuskevich.instance.friendManager.isFriend(p_188358_1_.getName()) && CustomModel.friends.getCurrentValue())) {
+                if (!(!CustomModel.onlyMe.getCurrentValue() || p_188358_1_ == Minecraft.getMinecraft().player || forum.instance.friendManager.isFriend(p_188358_1_.getName()) && CustomModel.friends.getCurrentValue())) {
                     GlStateManager.translate((float)(flag ? -1 : 1) / 16.0f, 0.125f, -0.625f);
                 } else if (p_188358_1_.isSneaking()) {
                     GlStateManager.translate((double)((float)(flag ? -1 : 1) / 16.0f), (double)0.2f, -0.3);
@@ -115,7 +115,7 @@ public class LayerHeldItem
                 Minecraft.getMinecraft().getItemRenderer().renderItemSide(p_188358_1_, p_188358_2_, p_188358_3_, flag);
                 GlStateManager.popMatrix();
             }
-        } else if (tuskevich.instance.featureManager.getFeature(CustomModel.class).isEnabled() && CustomModel.modelMode.currentMode.equals("Sonic")) {
+        } else if (forum.instance.featureManager.getFeature(CustomModel.class).isEnabled() && CustomModel.modelMode.currentMode.equals("Sonic")) {
             if (!p_188358_2_.isEmpty()) {
                 GlStateManager.pushMatrix();
                 this.func_191361_a(handSide);
@@ -126,7 +126,7 @@ public class LayerHeldItem
                 GlStateManager.rotate(180.0f, 0.0f, 1.0f, 0.0f);
                 boolean flag = handSide == EnumHandSide.LEFT;
                 boolean bl = flag;
-                if (!(!CustomModel.onlyMe.getCurrentValue() || p_188358_1_ == Minecraft.getMinecraft().player || tuskevich.instance.friendManager.isFriend(p_188358_1_.getName()) && CustomModel.friends.getCurrentValue())) {
+                if (!(!CustomModel.onlyMe.getCurrentValue() || p_188358_1_ == Minecraft.getMinecraft().player || forum.instance.friendManager.isFriend(p_188358_1_.getName()) && CustomModel.friends.getCurrentValue())) {
                     GlStateManager.translate((float)(flag ? -1 : 1) / 16.0f, 0.125f, -0.625f);
                 } else {
                     GlStateManager.translate((float)(flag ? -1 : 1) / 16.0f + 0.05f, 0.05f, -0.925f);
@@ -134,7 +134,7 @@ public class LayerHeldItem
                 Minecraft.getMinecraft().getItemRenderer().renderItemSide(p_188358_1_, p_188358_2_, p_188358_3_, flag);
                 GlStateManager.popMatrix();
             }
-        } else if (tuskevich.instance.featureManager.getFeature(CustomModel.class).isEnabled() && CustomModel.modelMode.currentMode.equals("CupHead")) {
+        } else if (forum.instance.featureManager.getFeature(CustomModel.class).isEnabled() && CustomModel.modelMode.currentMode.equals("CupHead")) {
             if (!p_188358_2_.isEmpty()) {
                 GlStateManager.pushMatrix();
                 this.func_191361_a(handSide);
@@ -145,7 +145,7 @@ public class LayerHeldItem
                 GlStateManager.rotate(180.0f, 0.0f, 1.0f, 0.0f);
                 boolean flag = handSide == EnumHandSide.LEFT;
                 boolean bl = flag;
-                if (!(!CustomModel.onlyMe.getCurrentValue() || p_188358_1_ == Minecraft.getMinecraft().player || tuskevich.instance.friendManager.isFriend(p_188358_1_.getName()) && CustomModel.friends.getCurrentValue())) {
+                if (!(!CustomModel.onlyMe.getCurrentValue() || p_188358_1_ == Minecraft.getMinecraft().player || forum.instance.friendManager.isFriend(p_188358_1_.getName()) && CustomModel.friends.getCurrentValue())) {
                     GlStateManager.translate((float)(flag ? -1 : 1) / 16.0f, 0.125f, -0.625f);
                 } else {
                     GlStateManager.translate((float)(flag ? -1 : 1) / 16.0f, -0.325f, -0.625f);
@@ -153,7 +153,7 @@ public class LayerHeldItem
                 Minecraft.getMinecraft().getItemRenderer().renderItemSide(p_188358_1_, p_188358_2_, p_188358_3_, flag);
                 GlStateManager.popMatrix();
             }
-        } else if (tuskevich.instance.featureManager.getFeature(CustomModel.class).isEnabled() && CustomModel.modelMode.currentMode.equals("Rabbit")) {
+        } else if (forum.instance.featureManager.getFeature(CustomModel.class).isEnabled() && CustomModel.modelMode.currentMode.equals("Rabbit")) {
             if (!p_188358_2_.isEmpty()) {
                 GlStateManager.pushMatrix();
                 this.func_191361_a(handSide);
@@ -164,7 +164,7 @@ public class LayerHeldItem
                 GlStateManager.rotate(180.0f, 0.0f, 1.0f, 0.0f);
                 boolean flag = handSide == EnumHandSide.LEFT;
                 boolean bl = flag;
-                if (!(!CustomModel.onlyMe.getCurrentValue() || p_188358_1_ == Minecraft.getMinecraft().player || tuskevich.instance.friendManager.isFriend(p_188358_1_.getName()) && CustomModel.friends.getCurrentValue())) {
+                if (!(!CustomModel.onlyMe.getCurrentValue() || p_188358_1_ == Minecraft.getMinecraft().player || forum.instance.friendManager.isFriend(p_188358_1_.getName()) && CustomModel.friends.getCurrentValue())) {
                     GlStateManager.translate((float)(flag ? -1 : 1) / 16.0f, 0.125f, -0.625f);
                 } else {
                     GlStateManager.translate((float)(flag ? -2 : 2) / 16.0f, 0.15f, -1.0f);
