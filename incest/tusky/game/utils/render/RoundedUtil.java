@@ -82,6 +82,7 @@ public class RoundedUtil {
         GlStateManager.disableBlend();
     }
 
+
     private static void setupRoundedRectUniforms(float x, float y, float width, float height, float radius, ShaderUtil roundedTexturedShader) {
         ScaledResolution sr = new ScaledResolution(Minecraft.getMinecraft());
         roundedTexturedShader.setUniformf("location", x * sr.getScaleFactor(),

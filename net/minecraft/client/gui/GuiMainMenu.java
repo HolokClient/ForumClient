@@ -1,89 +1,94 @@
 package net.minecraft.client.gui;
 
-import com.mojang.realmsclient.gui.ChatFormatting;
-import incest.tusky.game.tuskevich;
-import incest.tusky.game.ui.FileHelper;
-import incest.tusky.game.ui.altmanager.GuiAltManager;
-import incest.tusky.game.ui.button.GuiMainMenuButton;
-import incest.tusky.game.utils.math.animations.Animation;
-import incest.tusky.game.utils.math.animations.impl.DecelerateAnimation;
-import incest.tusky.game.utils.render.RenderUtils;
+import incest.tusky.game.ui.altmanager.alt.AltManager;
 import incest.tusky.game.utils.render.RoundedUtil;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.client.renderer.GlStateManager;
+import org.lwjgl.opengl.GL11;
+import org.lwjgl.opengl.GL20;
 
 import java.awt.*;
 import java.io.IOException;
-
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.List;
 
 
 public class GuiMainMenu extends GuiScreen {
-    private int width;
-    public float scale = 2.0F;
-    private int height;
-    private Animation initAnimation;
-
+    public static int counter = 1;
+    private final long initTime = System.currentTimeMillis();
+    public static int bg = 0;
+    private GLSL backgroundShader;
+    float offset;
+    private List<String> buttons = new ArrayList();
+    private String selectedButton = "";
+    private GuiWorldSelection guiWorldSelection;
+    private GuiMultiplayer guiMultiplayer;
+    private GuiOptions guiOptions;
     public GuiMainMenu() {
     }
-
     public void initGui() {
-        ScaledResolution sr = new ScaledResolution(this.mc);
-        this.width = sr.getScaledWidth();
-        this.height = sr.getScaledHeight();
-        this.initAnimation = new DecelerateAnimation(300, 1.0);
-        this.buttonList.add(new GuiMainMenuButton(0, this.width / 2 - 80, this.height / 2 - 10, 180, 10, "Одиночная игра"));
-        this.buttonList.add(new GuiMainMenuButton(1, this.width / 2 - 80, this.height / 2 + 18, 180, 10, "Список серверов"));
-        this.buttonList.add(new GuiMainMenuButton(2, this.width / 2 - 80, this.height / 2 + 47, 180, 10, "Альт менеджер"));
-        this.buttonList.add(new GuiMainMenuButton(3, this.width / 2 - 35, this.height / 2 + 75, 25, 13, ""));
-        this.buttonList.add(new GuiMainMenuButton(4, this.width / 2 + 1, this.height / 2 + 75, 20, 10, ""));
-        this.buttonList.add(new GuiMainMenuButton(5, this.width / 2 + 35, this.height / 2 + 75, 20, 10, ""));
-
+        try {
+            this.backgroundShader = new GLSL("/assets/noise.fsh");
+        }
+        catch (IOException var2) {
+            throw new IllegalStateException("Failed to load backgound shader", var2);
+        }
+        this.buttons.clear();
+        this.buttons.addAll(Arrays.asList("Одиночная игра", "Сетевая игра", "Настройки", "Аккаунты"));
     }
-
     public void drawScreen(int mouseX, int mouseY, float partialTicks) {
-        new ScaledResolution(this.mc);
-        new ScaledResolution(this.mc);
-        RenderUtils.drawImage(new ResourceLocation("minced/bestfon.png"),0.01f, 0.01f, this.width, this.height, new Color(255,255,255,255));
-        RoundedUtil.drawRoundOutline((float)(this.width / 2 - 88), (float)(this.height / 2 - 55), 200.0F, 180.0F, 10,0.1f,  new Color(0, 0, 0, 171),new Color(255,255,255));
-        RoundedUtil.drawRoundOutline(this.width / 2 - 80, this.height / 2 - 10, 180, 20, 5,0.1f,  new Color(58, 58, 58, 124), new Color(255,255,255));
-        RoundedUtil.drawRoundOutline(this.width / 2 - 80, this.height / 2 + 18, 180, 20, 5, 0.1f, new Color(58, 58, 58, 124),new Color(255,255,255));
-        RoundedUtil.drawRoundOutline(this.width / 2 - 80, this.height / 2 + 47, 180, 20, 5, 0.1f,   new Color(58, 58, 58, 124), new Color(255,255,255));
-        RoundedUtil.drawRoundOutline(this.width / 2 - 35, this.height / 2 + 75, 25, 25, 5, 0.1f,  new Color(58, 58, 58, 124), new Color(255,255,255));
-        RenderUtils.drawImage(new ResourceLocation("minced/folder.png"),this.width / 2 - 31, this.height / 2 + 77, 18, 18, new Color(255,255,255,255));
-        RoundedUtil.drawRoundOutline(this.width / 2 + 1, this.height / 2 + 75, 25, 25, 5, 0.1f, new Color(58, 58, 58, 124),new Color(255,255,255));
-        RenderUtils.drawImage(new ResourceLocation("minced/close.png"), this.width / 2 + 3,this.height / 2 + 77, 20, 20, new Color(255,255,255,255));
-        RoundedUtil.drawRoundOutline(this.width / 2 + 35, this.height / 2 + 75, 25, 25, 5, 0.1f,  new Color(58, 58, 58, 124),new Color(255,255,255));
-        RenderUtils.drawImage(new ResourceLocation("minced/vk.png"), this.width / 2 + 37, this.height / 2 + 77, 20, 20, new Color(255,255,255,255));
-
-        this.mc.tenacity20.drawStringWithShadow(ChatFormatting.WHITE + "MINCED", (double)(this.width / 2 - 27), (double)(this.height / 2 - 45), -1);
-        this.mc.tenacity20.drawStringWithShadow(ChatFormatting.WHITE + "", (double)(this.width / 2 - 45), (double)(this.height / 2 - 36), -1);
-        new ScaledResolution(this.mc);
+        ScaledResolution sr = new ScaledResolution(this.mc);
+        this.backgroundShader.useShader(sr.getScaledWidth(), sr.getScaledHeight(), mouseX, mouseY, (float)(System.currentTimeMillis() - this.initTime) / 1500.0f);
+        GL11.glBegin((int)7);
+        GL11.glVertex2f((float)-1.0f, (float)-1.0f);
+        GL11.glVertex2f((float)-1.0f, (float)1.0f);
+        GL11.glVertex2f((float)1.0f, (float)1.0f);
+        GL11.glVertex2f((float)1.0f, (float)-1.0f);
+        GL11.glEnd();
+        GL20.glUseProgram((int)0);
+        GlStateManager.disableCull();
+        GlStateManager.pushMatrix();
+        RoundedUtil.drawRound((float)(sr.getScaledWidth() / 2 - 70), (float)(sr.getScaledHeight() / 2 - 40), 140.0F, 120.0F, 5.0F, new Color(0, 0, 0, 110));
+       mc.mntsb_15.drawCenteredString("hexbyte", (float)(sr.getScaledWidth() / 2), (float)(sr.getScaledHeight() / 2 - 30), -1);
+        this.offset = 0.0F;
+        for(Iterator var5 = this.buttons.iterator(); var5.hasNext(); this.offset += 20.0F) {
+            String string = (String)var5.next();
+            mc.mntsb_15.drawCenteredString(string, (float)(sr.getScaledWidth() / 2), (float)(sr.getScaledHeight() / 2 - 40 + 34 + 5) + this.offset, -1);
+            RoundedUtil.drawRound((float)(sr.getScaledWidth() / 2 - 55), (float)(sr.getScaledHeight() / 2 - 40 + 34) + this.offset, 110.0F, 15.0F, 3.0F,  HoverUtility.isHovered(mouseX, mouseY, (double)(sr.getScaledWidth() / 2 - 55), (double)((float)(sr.getScaledHeight() / 2 - 40 + 34) + this.offset), 110.0, 15.0) ? new Color(255, 255, 255, 18) : new Color(255, 255, 255, 10));
+        }
+        GlStateManager.popMatrix();
         super.drawScreen(mouseX, mouseY, partialTicks);
     }
-
-    public void actionPerformed(GuiButton button) throws IOException {
-        switch (button.id) {
-            case 0:
-                this.mc.displayGuiScreen(new GuiWorldSelection(this));
-                break;
-            case 1:
-                this.mc.displayGuiScreen(new GuiMultiplayer(this));
-                break;
-            case 2:
-                this.mc.displayGuiScreen(new GuiAltManager());
-                break;
-            case 3:
-                this.mc.displayGuiScreen(new GuiOptions(this, this.mc.gameSettings));
-                break;
-            case 4:
-                System.exit(0);
-                tuskevich.instance.configManager.saveConfig("default");
-                tuskevich.instance.fileManager.saveFiles();
-            case 5:
-                FileHelper.showURL("https://vk.com/mincedclient");
-             break;
+    public void mouseClicked(int mouseX, int mouseY, int mouseButton) {
+        ScaledResolution sr = new ScaledResolution(this.mc);
+        this.offset = 0.0F;
+        for(Iterator var5 = this.buttons.iterator(); var5.hasNext(); this.offset += 20.0F) {
+            String string = (String)var5.next();
+            if (HoverUtility.isHovered(mouseX, mouseY, (double)(sr.getScaledWidth() / 2 - 55), (double)((float)(sr.getScaledHeight() / 2 - 40 + 34) + this.offset), 110.0, 15.0)) {
+                this.selectedButton = string;
+            }
         }
-
-        super.actionPerformed(button);
+        switch (this.selectedButton) {
+            case "Одиночная игра":
+                this.guiWorldSelection = new GuiWorldSelection(this.guiWorldSelection);
+                this.mc.displayGuiScreen(this.guiWorldSelection);
+                this.selectedButton = "";
+                break;
+            case "Сетевая игра":
+                this.guiMultiplayer = new GuiMultiplayer(this.guiMultiplayer);
+                this.mc.displayGuiScreen(this.guiMultiplayer);
+                this.selectedButton = "";
+                break;
+            case "Настройки":
+                this.guiOptions = new GuiOptions(this.guiOptions, this.mc.gameSettings);
+                this.mc.displayGuiScreen(this.guiOptions);
+                this.selectedButton = "";
+                break;
+            case "Аккаунты":
+                GuiScreen changeUser = new AltManager();
+                this.mc.displayGuiScreen(changeUser);
+                this.selectedButton = "";
+        }
     }
 }
-

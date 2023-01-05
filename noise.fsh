@@ -1,12 +1,10 @@
-//https://glslsandbox.com/e#78741.0
-
 #ifdef GL_ES
 precision mediump float;
 #endif
 
 #extension GL_OES_standard_derivatives : enable
 
-#define NUM_OCTAVES 10
+#define NUM_OCTAVES 40
 
 uniform float time;
 uniform vec2 resolution;
@@ -15,7 +13,7 @@ mat3 rotX(float a) {
 	float c = cos(a);
 	float s = sin(a);
 	return mat3(
-		1, 0, 0,
+		2, 0, 0,
 		0, c, -s,
 		0, s, c
 	);
@@ -63,34 +61,35 @@ void main(void) {
 
 	float t = 0.0, d;
 
-	float time2 = 3.0 * time / 2.0;
+	float time2 = 5.0 * time / 13.0;
 
 	vec2 q = vec2(0.0);
 	q.x = fbm(p + 0.00 * time2);
 	q.y = fbm(p + vec2(1.0));
 	vec2 r = vec2(0.0);
-	r.x = fbm(p + 1.0 * q + vec2(1.7, 9.2) + 0.15 * time2);
-	r.y = fbm(p + 1.0 * q + vec2(8.3, 2.8) + 0.126 * time2);
+	r.x = fbm(p + 1.0 * q + vec2(5.3, 9.2) + 0.23 * time2);
+	r.y = fbm(p + 1.0 * q + vec2(2.3, 2.8) + 0.4466 * time2);
 	float f = fbm(p + r);
 	vec3 color = mix(
-		vec3(1.101961, 3.0, 2),
+		vec3(0.101961, 1.0, 0.8),
 		vec3(.466667, 1.0, 0.666667),
-		clamp((f * f) * 4.0, 0.0, 1.0)
+		clamp((f * f) * 9.0, 0.0, 22.0)
 	);
 
 	color = mix(
 		color,
-		vec3(0.0, 1, 0.2),
+		vec3(1, 0.6, 0.6),
 		clamp(length(q), 0.0, 1.0)
 	);
 
+
 	color = mix(
 		color,
-		vec3(0, .4, .3),
+		vec3(0., 1, 3.5),
 		clamp(length(r.x), 0.0, 1.0)
 	);
 
-	color = (f *f * f + 0.6 * f * f + 0.5 * f) * color;
+	color = (f *f * f + 0.2 * f * f + 0.5 * f) * color;
 
 	gl_FragColor = vec4(color, 1.0);
 }
