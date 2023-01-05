@@ -1,7 +1,7 @@
 package net.minecraft.client.gui;
 
-import incest.tusky.game.ui.altmanager.alt.AltManager;
-import incest.tusky.game.utils.render.RoundedUtil;
+import digger.cmept.forum.ui.altmanager.alt.AltManager;
+import digger.cmept.forum.utils.render.RoundedUtil;
 import net.minecraft.client.renderer.GlStateManager;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL20;
@@ -50,7 +50,7 @@ public class GuiMainMenu extends GuiScreen {
         GlStateManager.disableCull();
         GlStateManager.pushMatrix();
         RoundedUtil.drawRound((float)(sr.getScaledWidth() / 2 - 70), (float)(sr.getScaledHeight() / 2 - 40), 140.0F, 120.0F, 5.0F, new Color(0, 0, 0, 110));
-       mc.mntsb_15.drawCenteredString("hexbyte", (float)(sr.getScaledWidth() / 2), (float)(sr.getScaledHeight() / 2 - 30), -1);
+       mc.mntsb_15.drawCenteredString("FORUM", (float)(sr.getScaledWidth() / 2), (float)(sr.getScaledHeight() / 2 - 30), -1);
         this.offset = 0.0F;
         for(Iterator var5 = this.buttons.iterator(); var5.hasNext(); this.offset += 20.0F) {
             String string = (String)var5.next();

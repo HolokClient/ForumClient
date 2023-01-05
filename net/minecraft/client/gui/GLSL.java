@@ -15,7 +15,7 @@ public class GLSL {
 
     public GLSL(String fragmentShaderLocation) throws IOException {
         int program = GL20.glCreateProgram();
-        GL20.glAttachShader(program, this.createShader(GLSL.class.getResourceAsStream("/assets/minecraft/stardust/shaders/passthrough.vsh"), 35633));
+        GL20.glAttachShader(program, this.createShader(GLSL.class.getResourceAsStream("/assets/minecraft/shaders/passthrough.vsh"), 35633));
         GL20.glAttachShader(program, this.createShader(GLSL.class.getResourceAsStream(fragmentShaderLocation), 35632));
         GL20.glLinkProgram(program);
         int linked = GL20.glGetProgrami(program, 35714);
