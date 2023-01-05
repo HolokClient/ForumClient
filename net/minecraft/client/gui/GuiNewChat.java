@@ -5,8 +5,8 @@ import java.util.Iterator;
 import java.util.List;
 import javax.annotation.Nullable;
 
-import incest.tusky.game.event.EventManager;
-import incest.tusky.game.event.events.impl.player.EventReceiveMessage;
+import digger.cmept.forum.event.EventManager;
+import digger.cmept.forum.event.events.impl.player.EventReceiveMessage;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.player.EntityPlayer;

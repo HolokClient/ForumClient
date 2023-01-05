@@ -1,7 +1,7 @@
 package net.minecraft.item;
 
-import incest.tusky.game.event.EventManager;
-import incest.tusky.game.event.events.impl.player.OnEatFood;
+import digger.cmept.forum.event.EventManager;
+import digger.cmept.forum.event.events.impl.player.OnEatFood;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;

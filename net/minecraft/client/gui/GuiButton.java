@@ -1,6 +1,6 @@
 package net.minecraft.client.gui;
 
-import incest.tusky.game.utils.render.RenderUtils;
+import digger.cmept.forum.utils.render.RenderUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.PositionedSoundRecord;
 import net.minecraft.client.audio.SoundHandler;

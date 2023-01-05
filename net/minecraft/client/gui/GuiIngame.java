@@ -6,7 +6,6 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Ordering;
 
-import java.awt.*;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
@@ -14,16 +13,14 @@ import java.util.Map;
 import java.util.Random;
 import javax.annotation.Nullable;
 
-import incest.tusky.game.module.impl.Movement.Timer;
-import incest.tusky.game.tuskevich;
-import incest.tusky.game.event.EventManager;
-import incest.tusky.game.event.events.impl.render.EventRender2D;
-import incest.tusky.game.event.events.impl.render.EventRenderScoreboard;
-import incest.tusky.game.event.types.EventType;
-import incest.tusky.game.module.impl.Util.NameProtect;
-import incest.tusky.game.module.impl.Render.Crosshair;
-import incest.tusky.game.module.impl.Render.ScoreboardFeatures;
-import incest.tusky.game.utils.render.RenderUtils;
+import digger.cmept.forum.forum;
+import digger.cmept.forum.event.EventManager;
+import digger.cmept.forum.event.events.impl.render.EventRender2D;
+import digger.cmept.forum.event.events.impl.render.EventRenderScoreboard;
+import digger.cmept.forum.event.types.EventType;
+import digger.cmept.forum.module.impl.Util.NameProtect;
+import digger.cmept.forum.module.impl.Render.Crosshair;
+import digger.cmept.forum.module.impl.Render.ScoreboardFeatures;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
@@ -76,8 +73,6 @@ import optifine.CustomItems;
 import optifine.Reflector;
 import optifine.ReflectorForge;
 import optifine.TextureAnimations;
-
-import static incest.tusky.game.utils.math.MathematicHelper.interpolate;
 
 public class GuiIngame extends Gui {
     private static final ResourceLocation VIGNETTE_TEX_PATH = new ResourceLocation("textures/misc/vignette.png");
@@ -384,7 +379,7 @@ public class GuiIngame extends Gui {
         if (scoreobjective1 != null) {
             EventRenderScoreboard e = new EventRenderScoreboard(EventType.PRE);
             EventManager.call(e);
-            if (!(tuskevich.instance.featureManager.getFeature(ScoreboardFeatures.class).isEnabled() && ScoreboardFeatures.noScore.getCurrentValue())) {
+            if (!(forum.instance.featureManager.getFeature(ScoreboardFeatures.class).isEnabled() && ScoreboardFeatures.noScore.getCurrentValue())) {
                 renderScoreboard(scoreobjective1, scaledresolution);
             }
             EventRenderScoreboard event2 = new EventRenderScoreboard(EventType.POST);
@@ -441,7 +436,7 @@ public class GuiIngame extends Gui {
             } else {
                 GlStateManager.tryBlendFuncSeparate(GlStateManager.SourceFactor.ONE_MINUS_DST_COLOR, GlStateManager.DestFactor.ONE_MINUS_SRC_COLOR, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
                 GlStateManager.enableAlpha();
-                if (!tuskevich.instance.featureManager.getFeature(Crosshair.class).isEnabled()) {
+                if (!forum.instance.featureManager.getFeature(Crosshair.class).isEnabled()) {
                     this.drawTexturedModalRect(l / 2 - 7, i1 / 2 - 7, 0, 0, 16, 16);
                 }
                 if (this.mc.gameSettings.attackIndicator == 1) {
@@ -764,7 +759,7 @@ public class GuiIngame extends Gui {
             int k = j1 - j * this.getFontRenderer().FONT_HEIGHT;
             int l = scaledRes.getScaledWidth() - 3 + 2;
             drawRect(l1 - 2, k, l, k + this.getFontRenderer().FONT_HEIGHT, 1342177280);
-            if (tuskevich.instance.featureManager.getFeature(NameProtect.class).isEnabled() && NameProtect.scoreboardSpoof.getCurrentValue()) {
+            if (forum.instance.featureManager.getFeature(NameProtect.class).isEnabled() && NameProtect.scoreboardSpoof.getCurrentValue()) {
                 this.getFontRenderer().drawString(s1.replace(Minecraft.getMinecraft().player.getName().substring(0, 2), TextFormatting.GOLD + "tuskevichpon                                                                                              "), l1, k, 553648127);
             } else {
                 this.getFontRenderer().drawString(s1, l1, k, 553648127);

@@ -1,0 +1,16 @@
+package digger.cmept.forum.event.events.impl.player;
+
+import digger.cmept.forum.event.events.Event;
+import net.minecraft.item.ItemStack;
+
+public class OnEatFood implements Event {
+    private ItemStack item;
+
+    public void setItem(ItemStack item) {
+        this.item = item;
+    }
+
+    public ItemStack getItem() {
+        return item;
+    }
+}

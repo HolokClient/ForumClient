@@ -1,14 +1,14 @@
 package net.minecraft.client.gui;
 
 import com.mojang.realmsclient.gui.ChatFormatting;
-import incest.tusky.game.tuskevich;
-import incest.tusky.game.ui.FileHelper;
-import incest.tusky.game.ui.altmanager.GuiAltManager;
-import incest.tusky.game.ui.button.GuiMainMenuButton;
-import incest.tusky.game.utils.math.animations.Animation;
-import incest.tusky.game.utils.math.animations.impl.DecelerateAnimation;
-import incest.tusky.game.utils.render.RenderUtils;
-import incest.tusky.game.utils.render.RoundedUtil;
+import digger.cmept.forum.forum;
+import digger.cmept.forum.ui.FileHelper;
+import digger.cmept.forum.ui.altmanager.GuiAltManager;
+import digger.cmept.forum.ui.button.GuiMainMenuButton;
+import digger.cmept.forum.utils.math.animations.Animation;
+import digger.cmept.forum.utils.math.animations.impl.DecelerateAnimation;
+import digger.cmept.forum.utils.render.RenderUtils;
+import digger.cmept.forum.utils.render.RoundedUtil;
 import net.minecraft.util.ResourceLocation;
 
 import java.awt.*;
@@ -76,8 +76,8 @@ public class GuiMainMenu extends GuiScreen {
                 break;
             case 4:
                 System.exit(0);
-                tuskevich.instance.configManager.saveConfig("default");
-                tuskevich.instance.fileManager.saveFiles();
+                forum.instance.configManager.saveConfig("default");
+                forum.instance.fileManager.saveFiles();
             case 5:
                 FileHelper.showURL("https://vk.com/mincedclient");
              break;

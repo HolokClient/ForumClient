@@ -10,8 +10,8 @@ import java.util.Comparator;
 import java.util.List;
 import javax.annotation.Nullable;
 
-import incest.tusky.game.tuskevich;
-import incest.tusky.game.module.impl.Util.NameProtect;
+import digger.cmept.forum.forum;
+import digger.cmept.forum.module.impl.Util.NameProtect;
 import net.minecraft.util.math.MathHelper;
 import org.lwjgl.opengl.GL11;
 
@@ -132,9 +132,9 @@ public class GuiPlayerTabOverlay extends Gui {
         ScaledResolution sr = new ScaledResolution(mc);
 
         if (this.mc.gameSettings.keyBindPlayerList.isKeyDown()) {
-            if (addition < 1.0F) addition += 1.5F * tuskevich.deltaTime();
+            if (addition < 1.0F) addition += 1.5F * forum.deltaTime();
         } else {
-            if (addition > 0.0F) addition -= 1.5F * tuskevich.deltaTime();
+            if (addition > 0.0F) addition -= 1.5F * forum.deltaTime();
         }
 
         addition = MathHelper.clamp(0F, 1F, addition);
@@ -211,7 +211,7 @@ public class GuiPlayerTabOverlay extends Gui {
 
                 String s4 = this.getPlayerName(networkplayerinfo1);
 
-                if (tuskevich.instance.featureManager.getFeature(NameProtect.class).isEnabled()) {
+                if (forum.instance.featureManager.getFeature(NameProtect.class).isEnabled()) {
                     if (NameProtect.tabSpoof.getCurrentValue() && !s4.contains(mc.player.getName())) {
                         s4 = "\247aProtected";
                     }

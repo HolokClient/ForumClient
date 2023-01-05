@@ -4,13 +4,13 @@ import com.google.common.base.MoreObjects;
 
 import java.util.Objects;
 
-import incest.tusky.game.tuskevich;
-import incest.tusky.game.event.EventManager;
-import incest.tusky.game.event.events.impl.player.EventViewModel;
-import incest.tusky.game.module.impl.Combat.KillAura;
-import incest.tusky.game.module.impl.Render.NoRender;
-import incest.tusky.game.module.impl.Render.SwingAnimations;
-import incest.tusky.game.module.impl.Render.ViewModel;
+import digger.cmept.forum.forum;
+import digger.cmept.forum.event.EventManager;
+import digger.cmept.forum.event.events.impl.player.EventViewModel;
+import digger.cmept.forum.module.impl.Combat.KillAura;
+import digger.cmept.forum.module.impl.Render.NoRender;
+import digger.cmept.forum.module.impl.Render.SwingAnimations;
+import digger.cmept.forum.module.impl.Render.ViewModel;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -280,7 +280,7 @@ public class ItemRenderer {
             GlStateManager.translate(0.0f, f2, 0.0f);
         }
         GlStateManager.translate(f3 * 0.6f * (float) i, f3 * -0.5f, f3 * 0.0f);
-        if (tuskevich.instance.featureManager.getFeature(ViewModel.class).isEnabled()) {
+        if (forum.instance.featureManager.getFeature(ViewModel.class).isEnabled()) {
             GlStateManager.rotate((float) i * f3 * 20.0f, 0.0f, 1.0f, 0.0f);
         } else {
             GlStateManager.rotate((float) i * f3 * 90.0f, 0.0f, 1.0f, 0.0f);
@@ -313,7 +313,7 @@ public class ItemRenderer {
         int i = enumHandSide == EnumHandSide.RIGHT ? 1 : -1;
         GlStateManager.translate(i, -0.52f, -0.72f);
         float angle = System.currentTimeMillis() / (long) ((int) SwingAnimations.item360Speed.getCurrentValue()) % 360L;
-        if (tuskevich.instance.featureManager.getFeature(SwingAnimations.class).isEnabled() && SwingAnimations.item360.getCurrentValue() && !(mc.player.isSwingInProgress && SwingAnimations.stopInSwing.getCurrentValue())) {
+        if (forum.instance.featureManager.getFeature(SwingAnimations.class).isEnabled() && SwingAnimations.item360.getCurrentValue() && !(mc.player.isSwingInProgress && SwingAnimations.stopInSwing.getCurrentValue())) {
             if (SwingAnimations.item360Hand.currentMode.equals("Left") && enumHandSide != EnumHandSide.LEFT || SwingAnimations.item360Hand.currentMode.equals("Right") && enumHandSide != EnumHandSide.RIGHT && !SwingAnimations.item360Hand.currentMode.equals("All")) {
                 return;
             }
@@ -474,8 +474,8 @@ public class ItemRenderer {
                     float equipProgress = 1.0f - (this.prevEquippedProgressMainHand + (this.equippedProgressMainHand - this.prevEquippedProgressMainHand) * p_187457_2_);
                     float swingprogress = this.mc.player.getSwingProgress(p_187457_2_);
                     String mode = SwingAnimations.swordAnim.getCurrentMode();
-                    if (tuskevich.instance.featureManager.getFeature(SwingAnimations.class).isEnabled() && !SwingAnimations.auraOnly.getCurrentValue() || tuskevich.instance.featureManager.getFeature(SwingAnimations.class).isEnabled() && tuskevich.instance.featureManager.getFeature(KillAura.class).isEnabled() && KillAura.target != null) {
-                        if (tuskevich.instance.featureManager.getFeature(SwingAnimations.class).isEnabled() && !SwingAnimations.auraOnly.getCurrentValue() || tuskevich.instance.featureManager.getFeature(SwingAnimations.class).isEnabled() && tuskevich.instance.featureManager.getFeature(KillAura.class).isEnabled() && KillAura.target != null) {
+                    if (forum.instance.featureManager.getFeature(SwingAnimations.class).isEnabled() && !SwingAnimations.auraOnly.getCurrentValue() || forum.instance.featureManager.getFeature(SwingAnimations.class).isEnabled() && forum.instance.featureManager.getFeature(KillAura.class).isEnabled() && KillAura.target != null) {
+                        if (forum.instance.featureManager.getFeature(SwingAnimations.class).isEnabled() && !SwingAnimations.auraOnly.getCurrentValue() || forum.instance.featureManager.getFeature(SwingAnimations.class).isEnabled() && forum.instance.featureManager.getFeature(KillAura.class).isEnabled() && KillAura.target != null) {
                             if (enumhandside != (this.mc.gameSettings.mainHand.equals(EnumHandSide.LEFT) ? EnumHandSide.RIGHT : EnumHandSide.LEFT)) {
                                 if (mode.equalsIgnoreCase("Default")) {
                                     this.transformSideFirstPerson2(enumhandside, p_187457_7_);
@@ -583,7 +583,7 @@ public class ItemRenderer {
             if (this.mc.player.isInsideOfMaterial(Material.WATER) && !Reflector.callBoolean(Reflector.ForgeEventFactory_renderWaterOverlay, this.mc.player, partialTicks)) {
                 this.renderWaterOverlayTexture(partialTicks);
             }
-            if (!tuskevich.instance.featureManager.getFeature(NoRender.class).isEnabled() && !NoRender.noFire.getCurrentValue()) {
+            if (!forum.instance.featureManager.getFeature(NoRender.class).isEnabled() && !NoRender.noFire.getCurrentValue()) {
                 if (this.mc.player.isBurning() && !Reflector.callBoolean(Reflector.ForgeEventFactory_renderFireOverlay, this.mc.player, partialTicks)) {
                     this.renderFireInFirstPerson();
                 }

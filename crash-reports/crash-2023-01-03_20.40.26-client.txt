@@ -5,9 +5,9 @@ Time: 2023-01-03 20:40
 Description: Rendering screen
 
 java.lang.NullPointerException: Cannot read field "width" because "currentData[character]" is null
-	at incest.tusky.game.ui.font.MCFontRenderer.getStringWidth(MCFontRenderer.java:412)
-	at incest.tusky.game.ui.font.MCFontRenderer.drawCenteredStringWithShadow(MCFontRenderer.java:143)
-	at incest.tusky.game.ui.button.GuiMainMenuButton.drawButton(GuiMainMenuButton.java:56)
+	at font.ui.digger.cmept.forum.MCFontRenderer.getStringWidth(MCFontRenderer.java:412)
+	at font.ui.digger.cmept.forum.MCFontRenderer.drawCenteredStringWithShadow(MCFontRenderer.java:143)
+	at button.ui.digger.cmept.forum.GuiMainMenuButton.drawButton(GuiMainMenuButton.java:56)
 	at net.minecraft.client.gui.GuiScreen.drawScreen(GuiScreen.java:97)
 	at net.minecraft.client.gui.GuiMainMenu.drawScreen(GuiMainMenu.java:60)
 	at net.minecraft.client.renderer.EntityRenderer.updateCameraAndRender(EntityRenderer.java:1298)
@@ -23,9 +23,9 @@ A detailed walkthrough of the error, its code path and all known details is as f
 -- Head --
 Thread: Client thread
 Stacktrace:
-	at incest.tusky.game.ui.font.MCFontRenderer.getStringWidth(MCFontRenderer.java:412)
-	at incest.tusky.game.ui.font.MCFontRenderer.drawCenteredStringWithShadow(MCFontRenderer.java:143)
-	at incest.tusky.game.ui.button.GuiMainMenuButton.drawButton(GuiMainMenuButton.java:56)
+	at font.ui.digger.cmept.forum.MCFontRenderer.getStringWidth(MCFontRenderer.java:412)
+	at font.ui.digger.cmept.forum.MCFontRenderer.drawCenteredStringWithShadow(MCFontRenderer.java:143)
+	at button.ui.digger.cmept.forum.GuiMainMenuButton.drawButton(GuiMainMenuButton.java:56)
 	at net.minecraft.client.gui.GuiScreen.drawScreen(GuiScreen.java:97)
 	at net.minecraft.client.gui.GuiMainMenu.drawScreen(GuiMainMenu.java:60)
 

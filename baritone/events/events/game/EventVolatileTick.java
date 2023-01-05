@@ -4,8 +4,8 @@
 package baritone.events.events.game;
 
 
-import incest.tusky.game.event.events.Event;
-import incest.tusky.game.event.events.callables.EventCancellable;
+import digger.cmept.forum.event.events.Event;
+import digger.cmept.forum.event.events.callables.EventCancellable;
 
 public class EventVolatileTick
 extends EventCancellable

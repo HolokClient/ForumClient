@@ -9,19 +9,19 @@ import java.util.List;
 import java.util.UUID;
 import javax.annotation.Nullable;
 
-import incest.tusky.game.tuskevich;
-import incest.tusky.game.cmd.impl.FakeNameCommand;
-import incest.tusky.game.event.EventManager;
-import incest.tusky.game.event.events.impl.player.EventUpdateLiving;
-import incest.tusky.game.module.impl.Combat.KeepSprint;
-import incest.tusky.game.module.impl.Util.NameProtect;
-import incest.tusky.game.module.impl.Movement.Speed;
-import incest.tusky.game.module.impl.Movement.Strafe;
-import incest.tusky.game.module.impl.Movement.FreeCam;
-import incest.tusky.game.module.impl.Movement.NoClip;
-import incest.tusky.game.module.impl.Player.NoPush;
-import incest.tusky.game.wavecapes.CapeHolder;
-import incest.tusky.game.wavecapes.stim.StickSimulation;
+import digger.cmept.forum.forum;
+import digger.cmept.forum.cmd.impl.FakeNameCommand;
+import digger.cmept.forum.event.EventManager;
+import digger.cmept.forum.event.events.impl.player.EventUpdateLiving;
+import digger.cmept.forum.module.impl.Combat.KeepSprint;
+import digger.cmept.forum.module.impl.Util.NameProtect;
+import digger.cmept.forum.module.impl.Movement.Speed;
+import digger.cmept.forum.module.impl.Movement.Strafe;
+import digger.cmept.forum.module.impl.Movement.FreeCam;
+import digger.cmept.forum.module.impl.Movement.NoClip;
+import digger.cmept.forum.module.impl.Player.NoPush;
+import digger.cmept.forum.wavecapes.CapeHolder;
+import digger.cmept.forum.wavecapes.stim.StickSimulation;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockBed;
 import net.minecraft.block.BlockHorizontal;
@@ -256,7 +256,7 @@ public abstract class EntityPlayer extends EntityLivingBase implements CapeHolde
      * Called to update the entity's position/logic.
      */
     public void onUpdate() {
-        this.noClip = tuskevich.instance.featureManager.getFeature(NoClip.class).isEnabled() || tuskevich.instance.featureManager.getFeature(FreeCam.class).isEnabled() || this.isSpectator();
+        this.noClip = forum.instance.featureManager.getFeature(NoClip.class).isEnabled() || forum.instance.featureManager.getFeature(FreeCam.class).isEnabled() || this.isSpectator();
 
         EventUpdateLiving event = new EventUpdateLiving();
         EventManager.call(event);
@@ -1190,7 +1190,7 @@ public abstract class EntityPlayer extends EntityLivingBase implements CapeHolde
                                 targetEntity.addVelocity((double) (-MathHelper.sin(this.rotationYaw * 0.017453292F) * (float) i * 0.5F), 0.1D, (double) (MathHelper.cos(this.rotationYaw * 0.017453292F) * (float) i * 0.5F));
                             }
 
-                            if (tuskevich.instance.featureManager.getFeature(KeepSprint.class).isEnabled()) {
+                            if (forum.instance.featureManager.getFeature(KeepSprint.class).isEnabled()) {
                                 this.motionX *= KeepSprint.speed.getCurrentValue();
                                 this.motionZ *= KeepSprint.speed.getCurrentValue();
                                 this.setSprinting(KeepSprint.setSprinting.getCurrentValue());
@@ -1899,7 +1899,7 @@ public abstract class EntityPlayer extends EntityLivingBase implements CapeHolde
         if (this == (Minecraft.getMinecraft()).player && FakeNameCommand.canChange) {
             str = FakeNameCommand.currentName;
         } else {
-            str = (tuskevich.instance.featureManager.getFeature(NameProtect.class).isEnabled() && NameProtect.myName.getCurrentValue() && this == (Minecraft.getMinecraft()).player) ? "Protected" : this.gameProfile.getName();
+            str = (forum.instance.featureManager.getFeature(NameProtect.class).isEnabled() && NameProtect.myName.getCurrentValue() && this == (Minecraft.getMinecraft()).player) ? "Protected" : this.gameProfile.getName();
         }
         return str;
     }
@@ -2007,7 +2007,7 @@ public abstract class EntityPlayer extends EntityLivingBase implements CapeHolde
     public abstract boolean isCreative();
 
     public boolean isPushedByWater() {
-        if (tuskevich.instance.featureManager.getFeature(NoPush.class).isEnabled() && NoPush.water.getCurrentValue()) {
+        if (forum.instance.featureManager.getFeature(NoPush.class).isEnabled() && NoPush.water.getCurrentValue()) {
             return false;
         }
         return !this.capabilities.isFlying;
@@ -2041,7 +2041,7 @@ public abstract class EntityPlayer extends EntityLivingBase implements CapeHolde
             f = 0.2F;
         } else if (!this.isSneaking() && this.height != 1.65F) {
             if (this.isElytraFlying() || this.height == 0.6F) {
-                if (tuskevich.instance.featureManager.getFeature(Strafe.class).isEnabled() || tuskevich.instance.featureManager.getFeature(Speed.class).isEnabled() && Speed.speedMode.currentMode.equals("Matrix Elytra")) {
+                if (forum.instance.featureManager.getFeature(Strafe.class).isEnabled() || forum.instance.featureManager.getFeature(Speed.class).isEnabled() && Speed.speedMode.currentMode.equals("Matrix Elytra")) {
                     f = 1.62F;
                 } else {
                     f = 0.4F;

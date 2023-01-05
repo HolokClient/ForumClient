@@ -5,7 +5,7 @@ import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.concurrent.atomic.AtomicInteger;
 
-import incest.tusky.game.tuskevich;
+import digger.cmept.forum.forum;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiDisconnected;
@@ -61,7 +61,7 @@ public class GuiConnecting extends GuiScreen {
                     GuiConnecting.this.networkManager.setNetHandler(new NetHandlerLoginClient(GuiConnecting.this.networkManager, GuiConnecting.this.mc, GuiConnecting.this.previousGuiScreen));
                     GuiConnecting.this.networkManager.sendPacket(new C00Handshake(finalIp, port, EnumConnectionState.LOGIN));
                     GuiConnecting.this.networkManager.sendPacket(new CPacketLoginStart(GuiConnecting.this.mc.getSession().getProfile()));
-                    tuskevich.playTimeStart = System.currentTimeMillis();
+                    forum.playTimeStart = System.currentTimeMillis();
 
                 } catch (UnknownHostException unknownhostexception) {
                     if (GuiConnecting.this.cancel) {

@@ -3,7 +3,7 @@ package net.minecraft.client.gui;
 import java.io.IOException;
 import javax.annotation.Nullable;
 
-import incest.tusky.game.tuskevich;
+import digger.cmept.forum.forum;
 import net.minecraft.client.Minecraft;
 import net.minecraft.util.ITabCompleter;
 import net.minecraft.util.TabCompleter;
@@ -171,7 +171,7 @@ public class GuiChat extends GuiScreen implements ITabCompleter
      */
     protected void mouseClicked(int mouseX, int mouseY, int mouseButton) throws IOException
     {
-        tuskevich.instance.draggableHUD.getScreen().click(mouseX, mouseY);
+        forum.instance.draggableHUD.getScreen().click(mouseX, mouseY);
 
         if (mouseButton == 0)
         {
@@ -233,7 +233,7 @@ public class GuiChat extends GuiScreen implements ITabCompleter
     }
     @Override
     protected void mouseReleased(int mouseX, int mouseY, int state) {
-        tuskevich.instance.draggableHUD.getScreen().release();
+        forum.instance.draggableHUD.getScreen().release();
 
         super.mouseReleased(mouseX, mouseY, state);
     }
@@ -244,7 +244,7 @@ public class GuiChat extends GuiScreen implements ITabCompleter
     public void drawScreen(int mouseX, int mouseY, float partialTicks)
     {
 
-        tuskevich.instance.draggableHUD.getScreen().draw(mouseX, mouseY);
+        forum.instance.draggableHUD.getScreen().draw(mouseX, mouseY);
 
         drawRect(2, this.height - 14, this.width - 2, this.height - 2, Integer.MIN_VALUE);
         this.inputField.drawTextBox();

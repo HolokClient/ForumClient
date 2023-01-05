@@ -2,9 +2,9 @@ package net.minecraft.client.renderer.entity;
 
 import javax.annotation.Nullable;
 
-import incest.tusky.game.tuskevich;
-import incest.tusky.game.module.impl.Util.NameProtect;
-import incest.tusky.game.module.impl.Render.NameTags;
+import digger.cmept.forum.forum;
+import digger.cmept.forum.module.impl.Util.NameProtect;
+import digger.cmept.forum.module.impl.Render.NameTags;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
@@ -339,7 +339,7 @@ public abstract class Render<T extends Entity> implements IEntityRenderer {
      * Renders an entity's name above its head
      */
     protected void renderLivingLabel(T entityIn, String str, double x, double y, double z, int maxDistance) {
-        if (tuskevich.instance.featureManager.getFeature(NameTags.class).isEnabled()) {
+        if (forum.instance.featureManager.getFeature(NameTags.class).isEnabled()) {
             return;
         }
         double d0 = entityIn.getDistanceSqToEntity(this.renderManager.renderViewEntity);
@@ -350,7 +350,7 @@ public abstract class Render<T extends Entity> implements IEntityRenderer {
             boolean flag1 = (this.renderManager.options.thirdPersonView == 2);
             float f2 = ((Entity) entityIn).height + 0.5F - (flag ? 0.25F : 0.0F);
             int i = "deadmau5".equals(str) ? -10 : 0;
-            if (tuskevich.instance.featureManager.getFeature(NameProtect.class).isEnabled() && NameProtect.otherName.getCurrentValue() && str.contains(entityIn.getName()) && !(entityIn instanceof EntityArmorStand))
+            if (forum.instance.featureManager.getFeature(NameProtect.class).isEnabled() && NameProtect.otherName.getCurrentValue() && str.contains(entityIn.getName()) && !(entityIn instanceof EntityArmorStand))
                 str = "Protected";
             EntityRenderer.drawNameplate(getFontRendererFromRenderManager(), str, (float) x, (float) y + f2, (float) z, i, f, f1, flag1, flag);
         }

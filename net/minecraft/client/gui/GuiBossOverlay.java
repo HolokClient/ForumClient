@@ -5,10 +5,10 @@ import com.google.common.collect.Maps;
 import java.util.Map;
 import java.util.UUID;
 
-import incest.tusky.game.tuskevich;
-import incest.tusky.game.event.EventManager;
-import incest.tusky.game.event.events.impl.render.EventBossBar;
-import incest.tusky.game.module.impl.Render.NoRender;
+import digger.cmept.forum.forum;
+import digger.cmept.forum.event.EventManager;
+import digger.cmept.forum.event.events.impl.render.EventBossBar;
+import digger.cmept.forum.module.impl.Render.NoRender;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.network.play.server.SPacketUpdateBossInfo;
@@ -26,7 +26,7 @@ public class GuiBossOverlay extends Gui {
     }
 
     public void renderBossHealth() {
-        if (tuskevich.instance.featureManager.getFeature(NoRender.class).isEnabled() && NoRender.noBossBar.getCurrentValue()) {
+        if (forum.instance.featureManager.getFeature(NoRender.class).isEnabled() && NoRender.noBossBar.getCurrentValue()) {
             return;
         }
         if (!this.mapBossInfos.isEmpty()) {

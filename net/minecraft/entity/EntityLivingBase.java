@@ -15,9 +15,9 @@ import java.util.Random;
 import java.util.UUID;
 import javax.annotation.Nullable;
 
-import incest.tusky.game.tuskevich;
-import incest.tusky.game.module.impl.Player.NoPush;
-import incest.tusky.game.module.impl.Render.SwingAnimations;
+import digger.cmept.forum.forum;
+import digger.cmept.forum.module.impl.Player.NoPush;
+import digger.cmept.forum.module.impl.Render.SwingAnimations;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockLadder;
@@ -1423,7 +1423,7 @@ public abstract class EntityLivingBase extends Entity {
      * progress indicator. Takes dig speed enchantments into account.
      */
     private int getArmSwingAnimationEnd() {
-        if (tuskevich.instance.featureManager.getFeature(SwingAnimations.class).isEnabled()) {
+        if (forum.instance.featureManager.getFeature(SwingAnimations.class).isEnabled()) {
             int speed = (int) SwingAnimations.swingSpeed.getCurrentValue();
             return isPotionActive(MobEffects.MINING_FATIGUE) ? (6 + (1 + getActivePotionEffect(MobEffects.MINING_FATIGUE).getAmplifier()) * 2) : speed;
         }
@@ -2411,7 +2411,7 @@ public abstract class EntityLivingBase extends Entity {
      * Returns true if this entity should push and be pushed by other entities when colliding.
      */
     public boolean canBePushed() {
-        if (tuskevich.instance.featureManager.getFeature(NoPush.class).isEnabled() && NoPush.players.getCurrentValue() && this instanceof EntityPlayerSP) {
+        if (forum.instance.featureManager.getFeature(NoPush.class).isEnabled() && NoPush.players.getCurrentValue() && this instanceof EntityPlayerSP) {
             return false;
         }
         return this.isEntityAlive() && !this.isOnLadder();

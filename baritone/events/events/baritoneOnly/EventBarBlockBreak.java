@@ -3,8 +3,8 @@
  */
 package baritone.events.events.baritoneOnly;
 
-import incest.tusky.game.event.events.Event;
-import incest.tusky.game.event.events.callables.EventCancellable;
+import digger.cmept.forum.event.events.Event;
+import digger.cmept.forum.event.events.callables.EventCancellable;
 import net.minecraft.util.math.BlockPos;
 
 public class EventBarBlockBreak

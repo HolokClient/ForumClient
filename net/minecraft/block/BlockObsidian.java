@@ -2,8 +2,8 @@ package net.minecraft.block;
 
 import java.util.Random;
 
-import incest.tusky.game.event.EventManager;
-import incest.tusky.game.event.events.impl.player.ObsidianPlaceEvent;
+import digger.cmept.forum.event.EventManager;
+import digger.cmept.forum.event.events.impl.player.ObsidianPlaceEvent;
 
 import net.minecraft.block.material.MapColor;
 import net.minecraft.block.material.Material;

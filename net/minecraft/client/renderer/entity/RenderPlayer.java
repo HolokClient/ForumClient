@@ -1,10 +1,10 @@
 package net.minecraft.client.renderer.entity;
 
-import incest.tusky.game.tuskevich;
-import incest.tusky.game.module.impl.Render.Chams;
-import incest.tusky.game.module.impl.Render.CustomModel;
-import incest.tusky.game.utils.render.RenderUtils;
-import incest.tusky.game.wavecapes.renderlayers.CustomCapeRenderLayer;
+import digger.cmept.forum.forum;
+import digger.cmept.forum.module.impl.Render.Chams;
+import digger.cmept.forum.module.impl.Render.CustomModel;
+import digger.cmept.forum.utils.render.RenderUtils;
+import digger.cmept.forum.wavecapes.renderlayers.CustomCapeRenderLayer;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.AbstractClientPlayer;
 import net.minecraft.client.model.ModelBiped;
@@ -60,7 +60,7 @@ public class RenderPlayer extends RenderLivingBase<AbstractClientPlayer> {
             }
 
             this.setModelVisibilities(entity);
-            if (tuskevich.instance.featureManager.getFeature(Chams.class).isEnabled() && Chams.chamsMode.currentMode.equals("Walls") && entity != Minecraft.getMinecraft().player) {
+            if (forum.instance.featureManager.getFeature(Chams.class).isEnabled() && Chams.chamsMode.currentMode.equals("Walls") && entity != Minecraft.getMinecraft().player) {
                 GlStateManager.enablePolygonOffset();
                 GlStateManager.doPolygonOffset(1.0F, -1000000.0F);
                 super.doRender(entity, x, d0, z, entityYaw, partialTicks);
@@ -127,16 +127,16 @@ public class RenderPlayer extends RenderLivingBase<AbstractClientPlayer> {
     }
 
     public ResourceLocation getEntityTexture(AbstractClientPlayer entity) {
-        if (tuskevich.instance.featureManager.getFeature(CustomModel.class).isEnabled() && (!CustomModel.onlyMe.getCurrentValue() || entity == Minecraft.getMinecraft().player || tuskevich.instance.friendManager.isFriend(entity.getName()) && CustomModel.friends.getCurrentValue())) {
-            if (tuskevich.instance.featureManager.getFeature(CustomModel.class).isEnabled() && CustomModel.modelMode.currentMode.equals("Amogus")) {
+        if (forum.instance.featureManager.getFeature(CustomModel.class).isEnabled() && (!CustomModel.onlyMe.getCurrentValue() || entity == Minecraft.getMinecraft().player || forum.instance.friendManager.isFriend(entity.getName()) && CustomModel.friends.getCurrentValue())) {
+            if (forum.instance.featureManager.getFeature(CustomModel.class).isEnabled() && CustomModel.modelMode.currentMode.equals("Amogus")) {
                 return new ResourceLocation("minced/models/amogus.png");
             }
 
-            if (tuskevich.instance.featureManager.getFeature(CustomModel.class).isEnabled() && CustomModel.modelMode.currentMode.equals("Jeff Killer")) {
+            if (forum.instance.featureManager.getFeature(CustomModel.class).isEnabled() && CustomModel.modelMode.currentMode.equals("Jeff Killer")) {
                 return new ResourceLocation("minced/models/jeff.png");
             }
 
-            if (tuskevich.instance.featureManager.getFeature(CustomModel.class).isEnabled() && CustomModel.modelMode.currentMode.equals("Demon")) {
+            if (forum.instance.featureManager.getFeature(CustomModel.class).isEnabled() && CustomModel.modelMode.currentMode.equals("Demon")) {
                 if (CustomModel.customColor.getCurrentValue()) {
                     RenderUtils.color(CustomModel.demonColor.getColorValue());
                 }
@@ -144,7 +144,7 @@ public class RenderPlayer extends RenderLivingBase<AbstractClientPlayer> {
 
             }
 
-            if (tuskevich.instance.featureManager.getFeature(CustomModel.class).isEnabled() && CustomModel.modelMode.currentMode.equals("Rabbit")) {
+            if (forum.instance.featureManager.getFeature(CustomModel.class).isEnabled() && CustomModel.modelMode.currentMode.equals("Rabbit")) {
                 return new ResourceLocation("minced/models/rabbit.png");
             }
         }

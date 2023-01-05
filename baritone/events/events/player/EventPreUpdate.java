@@ -3,8 +3,8 @@
  */
 package baritone.events.events.player;
 
-import incest.tusky.game.event.events.Event;
-import incest.tusky.game.event.events.callables.EventCancellable;
+import digger.cmept.forum.event.events.Event;
+import digger.cmept.forum.event.events.callables.EventCancellable;
 
 public class EventPreUpdate
 extends EventCancellable

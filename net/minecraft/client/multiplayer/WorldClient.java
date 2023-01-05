@@ -9,7 +9,7 @@ import java.util.Set;
 import javax.annotation.Nullable;
 
 import com.mojang.realmsclient.gui.ChatFormatting;
-import incest.tusky.game.event.EventManager;
+import digger.cmept.forum.event.EventManager;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
