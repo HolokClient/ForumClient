@@ -7,8 +7,8 @@ import digger.cmept.forum.ui.altmanager.GuiAltManager;
 import digger.cmept.forum.ui.button.GuiMainMenuButton;
 import digger.cmept.forum.utils.math.animations.Animation;
 import digger.cmept.forum.utils.math.animations.impl.DecelerateAnimation;
-import digger.cmept.forum.utils.otherutils.gayutil.RoundedUtil;
 import digger.cmept.forum.utils.render.RenderUtils;
+import digger.cmept.forum.utils.render.RoundedUtil;
 import net.minecraft.util.ResourceLocation;
 
 import java.awt.*;
@@ -28,9 +28,9 @@ public class GuiMainMenu extends GuiScreen {
         this.width = sr.getScaledWidth();
         this.height = sr.getScaledHeight();
         this.initAnimation = new DecelerateAnimation(300, 1.0);
-        this.buttonList.add(new GuiMainMenuButton(0, this.width / 2 - 80, this.height / 2 - 10, 180, 10, "РћРґРёРЅРѕС‡РЅР°СЏ РёРіСЂР°"));
-        this.buttonList.add(new GuiMainMenuButton(1, this.width / 2 - 80, this.height / 2 + 18, 180, 10, "РЎРїРёСЃРѕРє СЃРµСЂРІРµСЂРѕРІ"));
-        this.buttonList.add(new GuiMainMenuButton(2, this.width / 2 - 80, this.height / 2 + 47, 180, 10, "РђР»СЊС‚ РјРµРЅРµРґР¶РµСЂ"));
+        this.buttonList.add(new GuiMainMenuButton(0, this.width / 2 - 80, this.height / 2 - 10, 180, 10, "Одиночная игра"));
+        this.buttonList.add(new GuiMainMenuButton(1, this.width / 2 - 80, this.height / 2 + 18, 180, 10, "Список серверов"));
+        this.buttonList.add(new GuiMainMenuButton(2, this.width / 2 - 80, this.height / 2 + 47, 180, 10, "Альт менеджер"));
         this.buttonList.add(new GuiMainMenuButton(3, this.width / 2 - 35, this.height / 2 + 75, 25, 13, ""));
         this.buttonList.add(new GuiMainMenuButton(4, this.width / 2 + 1, this.height / 2 + 75, 20, 10, ""));
         this.buttonList.add(new GuiMainMenuButton(5, this.width / 2 + 35, this.height / 2 + 75, 20, 10, ""));

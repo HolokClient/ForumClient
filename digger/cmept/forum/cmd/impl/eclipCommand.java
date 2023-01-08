@@ -13,7 +13,7 @@ public class eclipCommand
     Minecraft mc = Minecraft.getMinecraft();
 
     public eclipCommand() {
-        super("eclip", "Eclip | Evclip | Ehclip", "ยง.Eclip | Ehclip | Evclip  + | - | <value> | bedrock  | up  | down", "Eclip", "Evclip", "Ehclip");
+        super("eclip", "Eclip | Evclip | Ehclip", "ง.Eclip | Ehclip | Evclip  + | - | <value> | bedrock  | up  | down", "Eclip", "Evclip", "Ehclip");
     }
 
     @Override

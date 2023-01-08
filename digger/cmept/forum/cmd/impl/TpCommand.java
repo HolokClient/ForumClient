@@ -21,7 +21,7 @@ public class TpCommand
             float endY = (float)Double.parseDouble(args[2]);
             float endZ = (float)Double.parseDouble(args[3]);
             if (this.mc.player.ticksExisted % 1 == 0) {
-                ChatUtils.addChatMessage(" РњРѕР±РёР»РёР·РёСЂСѓСЋ РЅР° Р·Р°РґР°РЅРЅС‹Рµ РјРЅРµ РєРѕРѕСЂРґРёРЅР°С‚С‹ " + endX + " " + endY + " " + endZ);
+                ChatUtils.addChatMessage(" Мобилизирую на заданные мне координаты " + endX + " " + endY + " " + endZ);
                 mc.player.motionY = 0.05f;
                 mc.player.connection.sendPacket(new CPacketPlayer.Position(endX + 0.5, endY, endZ - 0.5, false));
                 mc.player.connection.sendPacket(new CPacketPlayer.Position(endX, endY + 109, endZ, true));

@@ -3,7 +3,6 @@ package digger.cmept.forum.drag;
 import com.google.common.collect.Lists;
 import digger.cmept.forum.drag.comp.DragComp;
 import digger.cmept.forum.drag.comp.impl.*;
-import incest.tusky.game.drag.comp.impl.*;
 
 
 import java.util.List;

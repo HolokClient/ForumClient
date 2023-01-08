@@ -26,7 +26,7 @@ public class HelpCommand
                 ChatUtils.addChatMessage((Object)((Object)ChatFormatting.WHITE) + ".eclip");
                 ChatUtils.addChatMessage((Object)((Object)ChatFormatting.WHITE) + ".fakename");
                 ChatUtils.addChatMessage((Object)((Object)ChatFormatting.WHITE) + ".friend");
-                ChatUtils.addChatMessage((Object)((Object)ChatFormatting.WHITE) + ".config Р®Р—РђРўР¬, Рђ РќР• .cfg , РІС‹ С‚СѓРїС‹Рµ РІРѕРѕР±С‰Рµ РєР°Р¶РґС‹Р№ Р°РїРґРµР№С‚ РїРёС€Сѓ");
+                ChatUtils.addChatMessage((Object)((Object)ChatFormatting.WHITE) + ".config ЮЗАТЬ, А НЕ .cfg , вы тупые вообще каждый апдейт пишу");
                 ChatUtils.addChatMessage((Object)((Object)ChatFormatting.WHITE) + ".tp");
             }
         } else {

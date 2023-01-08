@@ -13,7 +13,7 @@ public class TPaCommand extends CommandAbstract {
     Minecraft mc = Minecraft.getMinecraft();
 
     public TPaCommand() {
-        super("tpa", "tpa", "В§6.tpa entity", "tpa");
+        super("tpa", "tpa", "§6.tpa entity", "tpa");
     }
 
     @Override
@@ -32,7 +32,7 @@ public class TPaCommand extends CommandAbstract {
                 Minecraft.getMinecraft().player.connection.sendPacket(new CPacketEntityAction(Minecraft.getMinecraft().player, CPacketEntityAction.Action.START_SNEAKING));
                 Minecraft.getMinecraft().player.connection.sendPacket(new CPacketPlayer.Position(x, y, z, false));
                 Minecraft.getMinecraft().player.connection.sendPacket(new CPacketPlayer(false));
-                ChatUtils.addChatMessage(TextFormatting.GREEN + "РўРµР»РµРїРѕСЂС‚Р°С†РёСЏ Рє " + x + " " + y + " " + z + "..");
+                ChatUtils.addChatMessage(TextFormatting.GREEN + "Телепортация к " + x + " " + y + " " + z + "..");
                 return;
             }
             

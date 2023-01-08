@@ -8,7 +8,6 @@ import digger.cmept.forum.ui.components.SorterHelper;
 import digger.cmept.forum.ui.settings.Setting;
 import digger.cmept.forum.ui.settings.impl.*;
 import digger.cmept.forum.module.Module;
-import incest.tusky.game.ui.settings.impl.*;
 import net.minecraft.client.renderer.GlStateManager;
 import org.lwjgl.opengl.GL11;
 import digger.cmept.forum.module.impl.Render.ClickGUI;

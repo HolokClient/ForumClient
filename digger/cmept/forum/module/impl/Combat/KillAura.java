@@ -77,7 +77,7 @@ public class KillAura extends Module {
         public static MultipleBoolSetting targetsSetting = new MultipleBoolSetting("Targets", new BooleanSetting("Players", true), new BooleanSetting("Mobs"), new BooleanSetting("Animals"), new BooleanSetting("Villagers"), new BooleanSetting("Invisibles", true));
 
     public KillAura() {
-        super("AttackAura", "Автоматически атакует энтити", ModuleCategory.Combat);
+        super("Aura", "Автоматически атакует энтити", ModuleCategory.Combat);
         addSettings(rotationMode, typeMode, sortMode, clickMode, minAPS, maxAPS, targetsSetting, fov, attackCoolDown, range, preAimRange, rayCast, yawrandom, pitchRandom, pitchHead, staticPitch, walls, onlyCritical, spaceOnly, checkCrystals, radiusCrystals, criticalFallDistance, shieldBreaker, breakNotifications, shieldFixer, fixerDelay, shieldDesync);
     }
 

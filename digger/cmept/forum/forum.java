@@ -50,10 +50,10 @@ public class forum {
         return Minecraft.getDebugFPS() > 0 ? (1.0000 / Minecraft.getDebugFPS()) : 1;
     }
 
-    public String name = "Forum", type = "Recode", version = "0.1";
+    public String name = "Errors", type = "Recode", version = "0.1";
 
     public void init() {
-        Display.setTitle(name + " " + type + "  - https://vk.com/mincedclient");
+        Display.setTitle(name + " " + type + "  - https://vk.com/errorsclient");
         ShaderShell.init();
         time = System.currentTimeMillis();
         (fileManager = new FileManager()).loadFiles();

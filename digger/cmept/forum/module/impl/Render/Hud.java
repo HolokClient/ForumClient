@@ -14,7 +14,6 @@ import digger.cmept.forum.utils.render.ClientHelper;
 import digger.cmept.forum.utils.render.GLUtils;
 import digger.cmept.forum.utils.render.RenderUtils;
 import digger.cmept.forum.utils.render.RoundedUtil;
-import incest.tusky.game.drag.comp.impl.*;
 import digger.cmept.forum.module.impl.Util.NameProtect;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
@@ -33,7 +32,7 @@ import java.util.List;
 
 public class Hud extends Module {
     public static BooleanSetting waterMark = new BooleanSetting("WaterMark", true, () -> true);
-    public static ListSetting waterMarkMode = new ListSetting("WaterMark Mode", "Minced", () -> waterMark.getCurrentValue(), "Minced", "Celestial");
+    public static ListSetting waterMarkMode = new ListSetting("WaterMark Mode", "Akrien", () -> waterMark.getCurrentValue(), "Akrien", "Celestial");
     public static BooleanSetting coords = new BooleanSetting("Coordinates", true, () -> true);
     public static BooleanSetting sessionInfo = new BooleanSetting("Session Info", false, () -> true);
     public static BooleanSetting armorHUD = new BooleanSetting("Armor Status", true, () -> true);
@@ -54,14 +53,16 @@ public class Hud extends Module {
     public void onRender(EventRender2D eventRender2D) {
         if (waterMark.getCurrentValue()) {
             switch (waterMarkMode.currentMode) {
-                case "Minced": {
-                    DragWaterMark pon = (DragWaterMark) forum.instance.draggableHUD.getDraggableComponentByClass(DragWaterMark.class);
-                    RoundedUtil.drawRound(10, 8, 90, 15, 4,new Color(241, 241, 241, 255));
-                    RenderUtils.drawBlurredShadow(1,5,35,25,35, new Color(255, 0, 0, 81));
-                    RoundedUtil.drawRound(1, 7, 25, 25, 12, new Color(255,255,255,255));
-                    RenderUtils.drawImage(new ResourceLocation("celestial/images/notification/" + "logo" + ".png"), 3,  8 , 19 + 3, 19 + 3,  ClientHelper.getClientColor(getY(), getY3(), 20));
-                    mc.mntsb_18.drawStringWithShadow("MINCED" + " FREE", 27, 12,  ClientHelper.getClientColor(getY(), getY3(), 20).getRGB());
-                    GLUtils.INSTANCE.rescaleMC();
+                case "Akrien": {
+                    String s = "ERRORS CLIENT";
+                    RoundedUtil.drawRound(5.0f, 5.0f, 25.0f, 25.0f, 12.0f, new Color(-1));
+                    RoundedUtil.drawRound(18.0f, 5.0f, Hud.mc.mntsb_18.getStringWidth(s) + 22, 13.0f, 2.5f, new Color(-1));
+                    RoundedUtil.drawGradientRound(31.5f, 5.5f, 2.0f, 12.2f, 0.0f, new Color(220, 220, 220), new Color(220, 220, 220), new Color(-1), new Color(-1));
+                    Hud.mc.mntsb_18.drawString(s.split(" ")[0], 35.0f, 8.5f, 0);
+                    Hud.mc.mntsb_18.drawString(s.split(" ")[1], 38 + Hud.mc.mntsb_18.getStringWidth(s.split(" ")[0]), 8.5f, ClientHelper.getClientColor().getRGB());
+                    Hud.mc.mntsb_30.drawStringWithShadow("E", 10.5, 10.5, ClientHelper.getClientColor().getRGB());
+                    GlStateManager.pushMatrix();
+                    GlStateManager.popMatrix();
                     break;
                 }
                 case "Celestial": {

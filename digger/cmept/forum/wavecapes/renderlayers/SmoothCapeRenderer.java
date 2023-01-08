@@ -5,7 +5,6 @@ import digger.cmept.forum.wavecapes.util.*;
 import digger.cmept.forum.module.impl.Render.CustomModel;
 import digger.cmept.forum.forum;
 import digger.cmept.forum.wavecapes.CapeHolder;
-import incest.tusky.game.wavecapes.util.*;
 import net.minecraft.client.entity.AbstractClientPlayer;
 import net.minecraft.client.renderer.BufferBuilder;
 import net.minecraft.client.renderer.Tessellator;

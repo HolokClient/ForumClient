@@ -28,11 +28,11 @@ public class ParseCommand
             if (args.length == 2 && upperCase.equalsIgnoreCase("PARSE")) {
                 try {
                     List<NetworkPlayerInfo> players = GuiPlayerTabOverlay.ENTRY_ORDERING.sortedCopy(ParseCommand.mc.player.connection.getPlayerInfoMap());
-                    File fileFolder = new File("C://Minced/configs/", "parser");
+                    File fileFolder = new File("C://Errors/configs/", "parser");
                     if (!fileFolder.exists()) {
                         fileFolder.mkdirs();
                     }
-                    File file = new File("C://Minced/configs/parser/", String.valueOf(ParseCommand.mc.getCurrentServerData().serverIP.split(":")[0]) + ".txt");
+                    File file = new File("C://Errors/configs/parser/", String.valueOf(ParseCommand.mc.getCurrentServerData().serverIP.split(":")[0]) + ".txt");
                     BufferedWriter out = new BufferedWriter(new FileWriter(file));
                     if (file.exists()) {
                         file.delete();
@@ -50,7 +50,7 @@ public class ParseCommand
                 }
                 catch (Exception players) {}
             } else if (args.length == 2 && upperCase.equalsIgnoreCase("DIR")) {
-                File file = new File("C:\\Minced\\configs\\parser");
+                File file = new File("C:\\Errors\\configs\\parser");
                 Sys.openURL(file.getAbsolutePath());
             }
         } else {

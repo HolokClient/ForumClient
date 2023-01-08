@@ -30,7 +30,7 @@ public class ModuleList extends Module {
     public BooleanSetting onlyBinds = new BooleanSetting("Only Binds", false, () -> true);
     public BooleanSetting noVisualModules = new BooleanSetting("No Visual", true, () -> true);
     public ModuleList() {
-        super("ModuleList", "Показывает список включанных модулей на экране", ModuleCategory.Render);
+        super("ArrayList", "Показывает список включанных модулей на экране", ModuleCategory.Render);
         addSettings(colorList,oneColor,twoColor, noVisualModules, onlyBinds);
     }
 

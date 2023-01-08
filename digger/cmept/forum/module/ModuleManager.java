@@ -5,11 +5,6 @@ import digger.cmept.forum.module.impl.Movement.*;
 import digger.cmept.forum.module.impl.Player.*;
 import digger.cmept.forum.module.impl.Render.*;
 import digger.cmept.forum.module.impl.Util.*;
-import incest.tusky.game.module.impl.Combat.*;
-import incest.tusky.game.module.impl.Util.*;
-import incest.tusky.game.module.impl.Movement.*;
-import incest.tusky.game.module.impl.Player.*;
-import incest.tusky.game.module.impl.Render.*;
 import net.minecraft.client.Minecraft;
 
 
@@ -24,7 +19,6 @@ public class ModuleManager {
 
     public ModuleManager() {
         fr.add(new AntiArmorStand());
-        fr.add(new ShieldBreaker());
         fr.add(new ElytraFix());
         fr.add(new AntiFlag());
         fr.add(new AirStealer());
